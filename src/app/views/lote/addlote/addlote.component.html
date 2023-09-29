@@ -1,0 +1,162 @@
+<div class="card">
+  <div class="card-h1">Crear Lote</div>
+  <div class="card-body">
+    <div >
+      <div class="card-form">
+        <form >
+          <div class="form-row">
+
+            <div class="col-md-6">
+              <label for="fecha">Código</label>
+              <input
+                name="codigo"
+                type="text"
+                formControlName="codigo"
+                placeholder="Codigo"
+                id="codigo"
+                 />
+                 <div >
+                  <!-- <mat-error *ngIf="fechaEntrada?.hasError('required')">
+                    La Fecha es Obligatoria
+                  </mat-error> -->
+                </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="fechaVencimiento">Numero de animales</label>
+              <input
+                name="numeroanimales"
+                type="text"
+                formControlName="fechaVencimiento"
+                placeholder="Numero de animales"
+                id="numeroanimales"
+                 />
+                 <div >
+                  <!-- <mat-error *ngIf="fechaVencimientoEntrada?.hasError('required')">
+                    La Fecha de Vencimiento es Obligatoria
+                  </mat-error> -->
+                </div>
+            </div>
+            <div class="col-md-6">
+              <label for="fechaVencimiento">Fecha de siembra</label>
+              <input
+                name="fechasiembra"
+                type="date"
+                formControlName="fechasiembra"
+                placeholder="Fecha de siembra"
+                id="fechasiembra"
+                 />
+                 <div >
+                  <!-- <mat-error *ngIf="fechaVencimientoEntrada?.hasError('required')">
+                    La Fecha de Vencimiento es Obligatoria
+                  </mat-error> -->
+                </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="especie">especie</label>
+              <select
+                name="especia"
+                type="text"
+                formControlName="especie"
+                id="especie"
+                >
+                <option>Seleccione una especie</option>
+                <option >
+
+                </option>
+                 <!-- <div *ngIf="proveedorFieldInvalid">
+                  <mat-error *ngIf="proveedorEntrada?.hasError('required')">
+                    El Proveedor es Obligatorio
+                  </mat-error>
+                </div> -->
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="proveedor">Proveedor</label>
+              <select
+                name="proveedor"
+                type="text"
+                formControlName="proveedor"
+                id="proveedor"
+                >
+                <option>Seleccione una opcion</option>
+                <option >
+
+                </option>
+                 <!-- <div *ngIf="proveedorFieldInvalid">
+                  <mat-error *ngIf="proveedorEntrada?.hasError('required')">
+                    El Proveedor es Obligatorio
+                  </mat-error>
+                </div> -->
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label for="proveedor">Unidad Productiva</label>
+              <select
+                name="unidadP"
+                type="text"
+                formControlName="unidadP"
+                id="unidadP"
+                >
+                <option>Seleccione una opcion</option>
+                <option >
+
+                </option>
+                 <!-- <div *ngIf="proveedorFieldInvalid">
+                  <mat-error *ngIf="proveedorEntrada?.hasError('required')">
+                    El Proveedor es Obligatorio
+                  </mat-error>
+                </div> -->
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="densidadsiembra">Densidad de siembra</label>
+              <input
+                name="densidadsiembra"
+                type="text"
+                formControlName="densidadsiembra"
+                placeholder="Densidad de siembra"
+                id="densidadsiembra"
+                 />
+                 <!-- <div *ngIf="numeroFacturaFieldInvalid">
+                  <mat-error *ngIf="numeroFacturaEntrada?.hasError('required')">
+                    El número de Factura es Obligatorio
+                  </mat-error>
+                </div> -->
+            </div>
+
+
+            <div class="col-md-6">
+              <label for="diacultivo">Dias de cultivo</label>
+              <input
+                name="diacultivo"
+                type="text"
+                formControlName="diacultivo"
+                placeholder="Dias de cultivo"
+                id="diacultivo"
+                 />
+                 <!-- <div *ngIf="registroIcaFieldInvalid">
+                  <mat-error *ngIf="registroIcaEntrada?.hasError('required')">
+                    El Registro ICA es Obligatorio
+                  </mat-error>
+                </div> -->
+            </div>
+
+
+
+          </div>
+          <div class="container-btn">
+            <button class="btn-new" type="submit">Guardar</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+    <!-- <div *ngIf="submitted">
+      <h3>Creaste un nuevo Registro de Entrada de Alimento!</h3>
+      <button class="btn-new" (click)="nuevoEntradaAlimento()">Crear Nueva</button>
+    </div> -->
+  </div>
+</div>

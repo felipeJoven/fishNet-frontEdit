@@ -1,0 +1,58 @@
+ <div class="container">
+        <h2>Editar Proveedor</h2>
+        <form (ngSubmit)="guardarCambiosProveedor()" #editarForm="ngForm">
+
+          <div class="form-group">
+            <label>Código</label>
+            <input type="text" class="form-control" id="codigo" [(ngModel)]="proveedor.codigo" name="codigo" required>
+          </div>
+
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control" id="nombre" [(ngModel)]="proveedor.nombre" name="nombre" required>
+          </div>
+
+          <div class="form-group">
+            <label>Apellido</label>
+            <input type="text" class="form-control" id="apellido" [(ngModel)]="proveedor.apellido" name="apellido" required>
+          </div>
+
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="text" class="form-control" id="telefono" [(ngModel)]="proveedor.telefono" name="telefono" required>
+          </div>
+
+          <div class="form-group">
+            <label>correo</label>
+            <input type="text" class="form-control" id="correo" [(ngModel)]="proveedor.correo" name="correo" required>
+          </div>
+
+          <div class="form-group">
+            <label>direccion</label>
+            <input type="text" class="form-control" id="direccion" [(ngModel)]="proveedor.direccion" name="direccion" required>
+          </div>
+
+          <div class="form-group">
+            <label>razonSocial</label>
+            <input type="text" class="form-control" id="razonSocial" [(ngModel)]="proveedor.razonSocial" name="razonSocial" required>
+          </div>
+
+          <div class="form-group">
+            <label>tipoProveedor</label>
+            <input type="text" class="form-control" id="tipoProveedor" [(ngModel)]="proveedor.tipoProveedor" name="tipoProveedor" required>
+          </div>
+
+          <div class="form-group">
+            <label>tipoIdentificacion</label>
+            <input type="text" class="form-control" id="tipoIdentificacion" [(ngModel)]="proveedor.tipoIdentificacion" name="tipoIdentificacion" required>
+          </div>
+
+          <div class="form-group">
+            <label>fechaRegistro</label>
+            <input type="text" class="form-control" id="fechaRegistro" [(ngModel)]="proveedor.fechaRegistro" name="fechaRegistro" required>
+          </div>
+
+          
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+      </div>

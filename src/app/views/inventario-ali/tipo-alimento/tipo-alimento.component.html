@@ -1,0 +1,55 @@
+<div class="card">
+    <div class="card-h1">Inventario de Alimento</div>
+    <div class="card-body">
+      <div *ngIf="!submitted">
+        <div class="card-form">
+          <form [formGroup]="formularioTipo" (ngSubmit)="submit()">
+            <h3>Registrar Entrada de Alimento</h3>
+            <div class="form-row">
+              
+              <div class="col-md-6">
+                <label for="fecha">Tipo de Alimento</label>
+                <input
+                  name="tipoAlimento" 
+                  type="text" 
+                  formControlName="tipoAlimento" 
+                  placeholder="Escribir aquí" 
+                  id="tipoAlimento" 
+                   />
+                   <div *ngIf="tipoAlimentoFieldInvalid">
+                    <mat-error *ngIf="tipoAlimentoTipo?.hasError('required')">
+                      El Tipo de Alimento es Obligatorio
+                    </mat-error>
+                  </div>
+              </div>
+              
+              <div class="col-md-6">
+                <label for="fechaRegistro">Fecha de Vencimiento</label>
+                <input
+                  name="fechaRegistro" 
+                  type="text" 
+                  formControlName="fechaRegistro"                 
+                  id="fechaRegistro" 
+                   />
+                   <div *ngIf="fechaRegistroFieldInvalid">
+                    <mat-error *ngIf="fechaRegistroTipo?.hasError('required')">
+                      La Fecha de Registro es Obligatoria
+                    </mat-error>
+                  </div>
+              </div>              
+    
+  
+            </div>
+            <div class="container-btn">
+              <button class="btn-new" type="submit">Guardar</button>
+            </div>
+          </form>
+        </div>
+        
+      </div>
+      <div *ngIf="submitted">
+        <h3>Creaste una nueva Entrada de Alimento!</h3>
+        <button class="btn-new" (click)="nuevoTipoAlimento()">Crear Nueva</button>
+      </div>
+    </div>
+  </div>

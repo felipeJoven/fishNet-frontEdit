@@ -1,0 +1,27 @@
+ <div class="container">
+        <h2>Editar Unidad Productiva</h2>
+        <form (ngSubmit)="guardarCambiosUnidadProductiva()" #editarForm="ngForm">
+          <div class="form-group">
+            <label>Area</label>
+            <input type="text" class="form-control" id="area" [(ngModel)]="unidadp.area" name="area" required>
+          </div>
+          <div class="form-group">
+            <label>Código</label>
+            <input type="text" class="form-control" id="codigo" [(ngModel)]="unidadp.nombreUnidadP" name="codigo" required>
+          </div>
+          <div class="form-group">
+            <label>Coordenada</label>
+            <input type="text" class="form-control" id="coordenadas" [(ngModel)]="unidadp.coordenadas" name="coordenadas" required>
+          </div>
+          <div class="form-group">
+            <label>Observaciones</label>
+            <input type="text" class="form-control" id="observaciones" [(ngModel)]="unidadp.observacion" name="observaciones" required>
+          </div>
+          <div class="form-group">
+            <label>Profundidad</label>
+            <input type="text" class="form-control" id="profundidad" [(ngModel)]="unidadp.profundidad" name="profundidad" required>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+      </div>

@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="form-group"></div>
+  <table id="dataTable" class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>ID</th>
+        <th>Area</th>
+        <th>Código</th>
+        <th>Coordenada</th>
+        <th>Observaciones</th>
+        <th>Profundidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of unidadp; let i = index" class="unidadp-item">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ item.id }}</td>
+        <td>{{ item.area }}</td>
+        <td>{{ item.nombreUnidadP }}</td>
+        <td>{{ item.coordenadas }}</td>
+        <td>{{ item.observacion }}</td>
+        <td>{{ item.profundidad }}</td>
+        <td><button class="edit" (click)="editarUnidadp(item.id)">Editar</button></td>
+        <td><button class="delete" (click)="eliminarUnidadProductiva(item.id)">Eliminar</button></td>
+      </tr>
+    </tbody>
+  </table>  
+</div>

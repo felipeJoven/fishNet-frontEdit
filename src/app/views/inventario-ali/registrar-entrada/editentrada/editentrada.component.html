@@ -1,0 +1,33 @@
+<div class="container">
+    <h2>Editar Entrada de Alimentos</h2>
+    <form (ngSubmit)="guardarCambiosEntradaAli()" #editarForm="ngForm">
+
+      <div class="form-group">
+        <label>Fecha</label>
+        <input type="text" class="form-control" id="fecha" [(ngModel)]="entradaAlimentos.fechaEntrada" name="codigo" required>
+      </div>
+
+      <div class="form-group">
+        <label>Fecha de Vencimiento</label>
+        <input type="text" class="form-control" id="fechaVencimiento" [(ngModel)]="entradaAlimentos.fechaVencimiento" name="fechaVencimiento" required>
+      </div>
+
+      <div class="form-group">
+        <label>Número de Factura</label>
+        <input type="text" class="form-control" id="numeroFactura" [(ngModel)]="entradaAlimentos.numeroFactura" name="numeroFactura" required>
+      </div>
+
+      <div class="form-group">
+        <label>Registro ICA</label>
+        <input type="text" class="form-control" id="registroIca" [(ngModel)]="entradaAlimentos.registroIca" name="registroIca" required>
+      </div>
+
+      <div class="form-group">
+        <label>Número de Kilos</label>
+        <input type="text" class="form-control" id="numeroKilos" [(ngModel)]="entradaAlimentos.numeroKilos" name="numeroKilos" required>
+      </div>
+
+      
+      <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+  </div>
