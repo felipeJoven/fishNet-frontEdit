@@ -1,0 +1,62 @@
+.card-h1{
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    background: #EC6708;
+    border-radius: 5px;
+  }
+  
+  .card-form input{
+    border: none;
+    border-bottom: 1px solid #EC6708;
+    width: 100%;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #000;
+    font-size: 17px;
+    margin-bottom: 40px;
+  }
+  h3{
+    font-size: 1.6rem;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    text-align: center;
+  }
+  .container-btn{
+    display: flex;
+    justify-content: center;
+  }
+  .btn-new{
+    background: #EC6708;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+    margin-top: 10px;
+    width: 6rem;
+    height: 50px;
+    transition: all 0.50s ease;
+  }
+  
+  .btn-new:hover{
+    background: transparent;
+    border: 1px solid #EC6708;
+    color: #EC6708;
+    transform: translateY(-5px);
+  }
+  
+  select{
+    border: none;
+    border-radius: 0  ;
+    border-bottom: 1px solid #EC6708;
+    width: 100%;
+    outline: none;
+    height: 40px;
+    color: #000;
+    font-size: 17px;
+    margin-bottom: 40px;
+  }
+  

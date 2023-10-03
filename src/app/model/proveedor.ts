@@ -1,13 +1,15 @@
+import { TipoIdentificacion } from "./tipo-identificacion";
+import { TipoProveedor } from "./tipo-proveedor";
+
 export class Proveedor {
     id: number;
-    codigo:string;
-    nombre:string;
-    apellido:string;
-    telefono:number;
-    correo:string;
-    direccion:string;
-    razonSocial: number;
-    tipoProveedor: string;
-    tipoIdentificacion:string;
-    fechaRegistro:string;
+    nombre : string;
+    apellido : string;
+    telefono : number;
+    correo : string;
+    direccion : string;
+    razonSocial : number;
+    fechaRegistro : Date;
+    tipoProveedor: TipoProveedor;
+    tipoIdentificacion: TipoIdentificacion;
     }

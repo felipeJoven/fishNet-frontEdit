@@ -5,8 +5,8 @@ import { RegistrarSalidaComponent } from './registrar-salida/registrar-salida.co
 import { RegistrarEntradaComponent } from './registrar-entrada/registrar-entrada.component';
 import { ConsultarEntradaComponent } from './registrar-entrada/consultar-entrada/consultar-entrada.component';
 import { ConsultarSalidaComponent } from './registrar-salida/consultar-salida/consultar-salida.component';
-import { TipoAlimentoComponent } from './tipo-alimento/tipo-alimento.component';
-import { GetalimentoComponent } from './tipo-alimento/getalimento/getalimento.component';
+import { AddalimentoComponent } from './tipo-alimento/tipo-alimento.component';
+import { TipoAlimentoComponent } from './tipo-alimento/addalimento/addalimento.component';
 
 const routes: Routes = [
   {path: 'informe', component: InventarioAliComponent},
@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'consultar-salida', component: ConsultarSalidaComponent},
   {path: 'registrar-salida', component: RegistrarSalidaComponent},
   {path: 'tipo-alimento', component: TipoAlimentoComponent},
-  {path: 'consultar-alimento', component: GetalimentoComponent}
+  {path: 'consultar-alimento', component: AddalimentoComponent}
 ];
 
 @NgModule({

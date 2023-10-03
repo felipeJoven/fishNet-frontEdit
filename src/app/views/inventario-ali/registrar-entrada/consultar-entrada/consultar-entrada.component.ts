@@ -21,7 +21,14 @@ export class ConsultarEntradaComponent implements OnInit {
     numeroKilos: 0
     } */
 
-    constructor(private invEntradaAlimentoService: InvEntradaAlimentoService, private dialog: MatDialog, private route: ActivatedRoute, private router: Router) { }
+    constructor(
+                private invEntradaAlimentoService: InvEntradaAlimentoService, 
+                private dialog: MatDialog, 
+                private route: ActivatedRoute, 
+                private router: Router
+                ) 
+                { }
+
     ngOnInit(): void {
       this.obtenerEntradaAlimento();
     }

@@ -1,117 +1,87 @@
 <div class="card">
   <div class="card-h1">Crear Unidad Productiva</div>
-  <div class="card-body">
-    <div *ngIf="!submitted">
-      <div class="card-form">
-        <form [formGroup]="formularioEstanque" (ngSubmit)="submit()">
-          <div class="form-row">
-            
-            <div class="col-md-6">
-              <label for="codigo">Unidad Productiva</label>
-              <input
-                name="nombreUnidadP" 
-                type="text" 
-                formControlName="nombreUnidadP" 
-                placeholder="Escribir aquí" 
-                id="nombreUnidadP" 
-                 />
-                 <div *ngIf="nombreUnidadPFieldInvalid">
-                  <mat-error *ngIf="nombreUnidadPEstanque?.hasError('required')">
+    <div class="card-body">
+      <div *ngIf="!submitted">
+        <div class="card-form">
+          <form [formGroup]="formulario" (ngSubmit)="submit()">
+            <div class="form-row">
+
+              <div class="col-md-6">
+                <label for="nombreUnidadP">Unidad Productiva</label>
+                <input name="nombreUnidadP" type="text" formControlName="nombreUnidadP" placeholder="Escribir aquí"
+                  id="nombreUnidadP" />
+                <div *ngIf="nombreUnidadPFieldInvalid">
+                  <mat-error *ngIf="nombreUnidadP?.hasError('required')">
                     La Unidad Productiva es Obligatoria
                   </mat-error>
                 </div>
-            </div>
+              </div>
 
-            <div class="col-md-6">
-              <label for="coordenadas">Coordenadas</label>
-              <input 
-                name="coordenadas" 
-                type="text" 
-                formControlName="coordenadas" 
-                placeholder="Escribir aquí" 
-                id="coordenadas" 
-                 />
-                 <div *ngIf="coordenadasFieldInvalid">
-                  <mat-error *ngIf="coordenadasEstanque?.hasError('required')">
+              <div class="col-md-6">
+                <label for="coordenadas">Coordenadas</label>
+                <input name="coordenadas" type="text" formControlName="coordenadas" placeholder="Escribir aquí"
+                  id="coordenadas" />
+                <div *ngIf="coordenadasFieldInvalid">
+                  <mat-error *ngIf="coordenadas?.hasError('required')">
                     La Coordenada es Obligatoria
                   </mat-error>
                 </div>
-            </div>
+              </div>
 
-            <div class="col-md-6">
-              <label for="observacion">Observación</label>
-              <input 
-                name="observacion" 
-                type="text" 
-                formControlName="observacion" 
-                placeholder="Escribir aquí" 
-                id="observacion" 
-                 />
-                 <div *ngIf="observacionesFieldInvalid">
-                  <mat-error *ngIf="observacionEstanque?.hasError('required')">
+              <div class="col-md-6">
+                <label for="observacion">Observación</label>
+                <input name="observacion" type="text" formControlName="observacion" placeholder="Escribir aquí"
+                  id="observacion" />
+                <div *ngIf="observacionFieldInvalid">
+                  <mat-error *ngIf="observacion?.hasError('required')">
                     Las observaciones son Obligatorias
                   </mat-error>
                 </div>
-                 
-            </div>
-            <div class="col-md-6">
-              <label for="area">Area</label>
-              <input 
-                name="area" 
-                type="text"  
-                formControlName="area"
-                placeholder="Escribir aquí" 
-                id="area" 
-                />
+
+              </div>
+              <div class="col-md-6">
+                <label for="area">Área</label>
+                <input name="area" type="text" formControlName="area" placeholder="Escribir aquí" id="area" />
                 <div *ngIf="areaFieldInvalid">
-                  <mat-error *ngIf="areaEstanque?.hasError('required')">
+                  <mat-error *ngIf="area?.hasError('required')">
                     El area es Obligatoria
                   </mat-error>
                 </div>
-            </div>            
-            
-            <div class="col-md-6">
-              <label for="profundidad">Profundiad</label>
-              <input 
-                name="profundidad" 
-                type="text" 
-                formControlName="profundidad"
-                placeholder="Escribir aquí" 
-                id="profundidad" 
-               />
-               <div *ngIf="profundidadFieldInvalid">
-                <mat-error *ngIf="profundidadEstanque?.hasError('required')">
-                  La profundidad es Obligatoria
-                </mat-error>
               </div>
-            </div>
-            
-            <div class="col-md-6">
-              <label for="fechaRegistro">Registro de Unidad Productiva</label>
-              <input 
-                name="fechaRegistro" 
-                type="date" 
-                formControlName="fechaRegistro"            
-                id="fechaRegistro" 
-               />
-               <div *ngIf="profundidadFieldInvalid">
-                <mat-error *ngIf="profundidadEstanque?.hasError('required')">
-                  La fecha es Obligatoria
-                </mat-error>
-              </div>
-            </div>
 
-          </div>
-          <div class="container-btn">
-            <button class="btn-new" type="submit">Guardar</button>
-          </div>
-        </form>
+              <div class="col-md-6">
+                <label for="profundidad">Profundiad</label>
+                <input name="profundidad" type="text" formControlName="profundidad" placeholder="Escribir aquí"
+                  id="profundidad" />
+                <div *ngIf="profundidadFieldInvalid">
+                  <mat-error *ngIf="profundidad?.hasError('required')">
+                    La profundidad es Obligatoria
+                  </mat-error>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="fechaRegistro">Registro de Unidad Productiva</label>
+                <input name="fechaRegistro" type="date" formControlName="fechaRegistro" id="fechaRegistro" />
+                <div *ngIf="fechaRegistroFieldInvalid">
+                  <mat-error *ngIf="fechaRegistro?.hasError('required')">
+                    La fecha es Obligatoria
+                  </mat-error>
+                </div>
+              </div>
+
+            </div>
+            <div class="container-btn">
+              <button class="btn btn-new" type="submit" [disabled]="!formulario.valid">Guardar</button>
+            </div>
+          </form>
+        </div>
+
       </div>
-      
-    </div>
-    <div *ngIf="submitted">
-      <h3>Creaste una nueva Unidad Productiva!</h3>
-      <button class="btn-new" (click)="nuevaUnidadP()">Crear Nueva</button>
-    </div>
+      <div *ngIf="submitted">
+        <h3>Creaste una nueva Unidad Productiva!</h3>
+        <button class="btn-new" (click)="nuevaUnidadP()">Crear Nueva</button>
+        <button routerLink="/unidad/consultar" class="btn-new">Ver Registros</button>
+      </div>
   </div>
 </div>

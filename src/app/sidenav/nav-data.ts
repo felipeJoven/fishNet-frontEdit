@@ -31,10 +31,6 @@ export const navbarData: INavbarData[] = [
     label: 'Inventario de Alimento',
     items:[
       {
-        routeLink: 'inventario/tipo-alimento',
-        label: 'Ingresar Tipo de Alimentos'
-      },
-      {
         routeLink: 'inventario/consultar-alimento',
         label: 'Consultar Tipo de Alimentos'
       },
@@ -46,18 +42,12 @@ export const navbarData: INavbarData[] = [
         routeLink: 'inventario/consultar-entrada',
         label: 'Consultar Entrada'
       },
-      {
-        routeLink: 'inventario/registrar-entrada',
-        label: 'Registrar Entrada'
-      },
+
       {
         routeLink: 'inventario/consultar-salida',
         label: 'Consultar Salida'
       },
-      {
-        routeLink: 'inventario/registrar-salida',
-        label: 'Registrar Salida'
-      },
+
     ]
   },
   {

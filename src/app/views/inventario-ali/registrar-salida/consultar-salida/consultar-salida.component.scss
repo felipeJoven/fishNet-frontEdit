@@ -1,0 +1,18 @@
+.btn-new{
+    background: #EC6708;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+    margin-top: 10px;
+    width: 6rem;
+    height: 50px;
+    transition: all 0.50s ease;
+  }
+  
+  .btn-new:hover{
+    background: transparent;
+    border: 1px solid #EC6708;
+    color: #EC6708;
+    transform: translateY(-5px);
+  }

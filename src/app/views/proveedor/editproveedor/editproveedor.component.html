@@ -3,11 +3,6 @@
         <form (ngSubmit)="guardarCambiosProveedor()" #editarForm="ngForm">
 
           <div class="form-group">
-            <label>Código</label>
-            <input type="text" class="form-control" id="codigo" [(ngModel)]="proveedor.codigo" name="codigo" required>
-          </div>
-
-          <div class="form-group">
             <label>Nombre</label>
             <input type="text" class="form-control" id="nombre" [(ngModel)]="proveedor.nombre" name="nombre" required>
           </div>

@@ -12,7 +12,7 @@ import { ProveedorService } from 'src/app/services/proveedor.service';
 export class ProveedorComponent implements OnInit {
     
   proveedor: Proveedor[] = [];
-  proveedorpr: Proveedor= {
+  /* proveedorpr: Proveedor= {
     id: 0,
     codigo:'',
     nombre:'',
@@ -24,9 +24,15 @@ export class ProveedorComponent implements OnInit {
     tipoProveedor: '',
     tipoIdentificacion:'',
     fechaRegistro:''
-    }
+    } */
 
-    constructor(private proveedorService: ProveedorService, private dialog: MatDialog, private route: ActivatedRoute, private router: Router) { }
+    constructor(
+                private proveedorService: ProveedorService, 
+                private dialog: MatDialog, private route: ActivatedRoute, 
+                private router: Router
+                ) 
+                { }
+
     ngOnInit(): void {
       this.obtenerProveedor();
     }
@@ -35,7 +41,10 @@ export class ProveedorComponent implements OnInit {
 
     obtenerProveedor():void{
     this.proveedorService.obtenerProveedor().subscribe(proveedor => {
+
       this.proveedor = proveedor;
+      console.log(this.proveedor);
+      
     });
   }
   

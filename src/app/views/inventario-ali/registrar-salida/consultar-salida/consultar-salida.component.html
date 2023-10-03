@@ -1,1 +1,28 @@
-<p>consultar-salida works!</p>
+<div class="container">
+    <div class="form-group"></div>
+    <h2>consultar salida de alimentos</h2>
+    <table id="dataTable" class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Fecha</th>
+          <th>Fecha de Vencimiento</th>
+          <th>Número de Factura</th>
+          <th>Registro ICA</th>
+          <th>Número de Kilos</th>
+          <th>Proveedor</th>
+          <th>Tipo de alimento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of salidaAlimento; let i = index" class="salida-alimento-item">
+  
+  
+          <td><button class="edit" (click)="(item.id)">Editar</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <button routerLink="/inventario/registrar-salida" class="btn-new">Registrar salida</button>
+  </div>
+  
+  

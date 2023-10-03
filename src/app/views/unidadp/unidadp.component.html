@@ -4,9 +4,9 @@
     <thead>
       <tr>
         <th>#</th>
-        <th>ID</th>
+        <th>Nombre de Unidad Productiva</th>
+        <th>Registro de Unidad Productiva</th>
         <th>Area</th>
-        <th>Código</th>
         <th>Coordenada</th>
         <th>Observaciones</th>
         <th>Profundidad</th>
@@ -15,9 +15,9 @@
     <tbody>
       <tr *ngFor="let item of unidadp; let i = index" class="unidadp-item">
         <th scope="row">{{ i + 1 }}</th>
-        <td>{{ item.id }}</td>
-        <td>{{ item.area }}</td>
         <td>{{ item.nombreUnidadP }}</td>
+        <td>{{ item.fechaRegistro }}</td>
+        <td>{{ item.area }}</td>
         <td>{{ item.coordenadas }}</td>
         <td>{{ item.observacion }}</td>
         <td>{{ item.profundidad }}</td>

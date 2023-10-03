@@ -3,128 +3,91 @@
   <div class="card-body">
     <div *ngIf="!submitted">
       <div class="card-form">
-        <form [formGroup]="formularioEntrada" (ngSubmit)="submit()">
+        <form [formGroup]="formulario" (ngSubmit)="submit()">
           <h3>Registrar Entrada de Alimento</h3>
           <div class="form-row">
-            
+
             <div class="col-md-6">
-              <label for="fechaEntrada">Fecha</label>
-              <input
-                name="fechaEntrada" 
-                type="text" 
-                formControlName="fechaEntrada" 
-                placeholder="fechaEntrada" 
-                id="fechaEntrada" 
-                 />
-                 <div *ngIf="fechaFieldInvalid">
-                  <mat-error *ngIf="fechaEntrada?.hasError('required')">
-                    La Fecha es Obligatoria
-                  </mat-error>
-                </div>
+              <label for="fechaEntrada">Fecha de Entrada</label>
+              <input name="fechaEntrada" type="date" formControlName="fechaEntrada" id="fechaEntrada" />
+              <div *ngIf="fechaEntradaFieldInvalid">
+                <mat-error *ngIf="fechaEntrada?.hasError('required')">
+                  La Fecha es Obligatoria
+                </mat-error>
+              </div>
             </div>
-            
+
             <div class="col-md-6">
               <label for="fechaVencimiento">Fecha de Vencimiento</label>
-              <input
-                name="fechaVencimiento" 
-                type="text" 
-                formControlName="fechaVencimiento" 
-                placeholder="fechaVencimiento" 
-                id="fechaVencimiento" 
-                 />
-                 <div *ngIf="fechaVencimientoFieldInvalid">
-                  <mat-error *ngIf="fechaVencimientoEntrada?.hasError('required')">
-                    La Fecha de Vencimiento es Obligatoria
-                  </mat-error>
-                </div>
+              <input name="fechaVencimiento" type="date" formControlName="fechaVencimiento" id="fechaVencimiento" />
+              <div *ngIf="fechaVencimientoFieldInvalid">
+                <mat-error *ngIf="fechaVencimiento?.hasError('required')">
+                  La Fecha es Obligatoria
+                </mat-error>
+              </div>
             </div>
-            
+
             <div class="col-md-6">
               <label for="proveedor">Proveedor</label>
-              <select
-                name="proveedor" 
-                type="text" 
-                formControlName="proveedor"                 
-                id="proveedor" 
-                >
-                <option>Seleccione un Proveedor</option> 
-                <option *ngFor="let pro of ProveedorList" value="{{pro.id}}">
-                  {{pro.nombre}}  
-                </option> 
-                 <div *ngIf="proveedorFieldInvalid">
-                  <mat-error *ngIf="proveedorEntrada?.hasError('required')">
+              <select name="proveedor" type="text" formControlName="proveedor" id="proveedor">
+                <option>Seleccione un Proveedor</option>
+                <option *ngFor="let item of ProveedorList" value="{{item.id}}">
+                  {{item.nombre}}
+                </option>
+              </select>
+                <div *ngIf="proveedorFieldInvalid">
+                  <mat-error *ngIf="proveedor?.hasError('required')">
                     El Proveedor es Obligatorio
                   </mat-error>
                 </div>
-              </select>
             </div>
-            
+
             <div class="col-md-6">
               <label for="numeroFactura">Número de Factura</label>
-              <input
-                name="numeroFactura" 
-                type="text" 
-                formControlName="numeroFactura" 
-                placeholder="numeroFactura" 
-                id="numeroFactura" 
-                 />
-                 <div *ngIf="numeroFacturaFieldInvalid">
-                  <mat-error *ngIf="numeroFacturaEntrada?.hasError('required')">
-                    El número de Factura es Obligatorio
-                  </mat-error>
-                </div>
+              <input name="numeroFactura" type="text" formControlName="numeroFactura" placeholder="numeroFactura"
+                id="numeroFactura" />
+              <div *ngIf="numeroFacturaFieldInvalid">
+                <mat-error *ngIf="numeroFactura?.hasError('required')">
+                  El número de Factura es Obligatorio
+                </mat-error>
+              </div>
             </div>
-            
+
             <div class="col-md-6">
               <label for="tipoAlimento">Tipo de Alimento</label>
-              <select
-                name="tipoAlimento" 
-                type="text" 
-                formControlName="tipoAlimento"                 
-                id="tipoAlimento" 
-                >
-                <option>Seleccione un Tipo de Alimento</option> 
-                <option *ngFor="let ali of TipoAlimentoList" value="{{ali.id}}">
-                  {{ali.tipoAlimento}}
-                </option> 
-                 <div *ngIf="tipoAlimentoFieldInvalid">
-                  <mat-error *ngIf="tipoAlimentoEntrada?.hasError('required')">
+              <select name="tipoAlimento" type="text" formControlName="tipoAlimento" id="tipoAlimento">
+                <option>Seleccione un Tipo de Alimento</option>
+                <option *ngFor="let item of TipoAlimentoList" value="{{item.id}}">
+                  {{item.tipoAlimento}}
+                </option>
+              </select>
+                <div *ngIf="tipoAlimentoFieldInvalid">
+                  <mat-error *ngIf="tipoAlimento?.hasError('required')">
                     El Tipo de Alimento es Obligatorio
                   </mat-error>
                 </div>
-              </select>
             </div>
-            
+
             <div class="col-md-6">
               <label for="registroIca">Registro ICA</label>
-              <input
-                name="registroIca" 
-                type="text" 
-                formControlName="registroIca" 
-                placeholder="registroIca" 
-                id="registroIca" 
-                 />
-                 <div *ngIf="registroIcaFieldInvalid">
-                  <mat-error *ngIf="registroIcaEntrada?.hasError('required')">
-                    El Registro ICA es Obligatorio
-                  </mat-error>
-                </div>
+              <input name="registroIca" type="text" formControlName="registroIca" placeholder="registroIca"
+                id="registroIca" />
+              <div *ngIf="registroIcaFieldInvalid">
+                <mat-error *ngIf="registroIca?.hasError('required')">
+                  El Registro ICA es Obligatorio
+                </mat-error>
+              </div>
             </div>
-            
+
             <div class="col-md-6">
               <label for="numeroKilos">Número de Kilos</label>
-              <input
-                name="numeroKilos" 
-                type="text" 
-                formControlName="numeroKilos" 
-                placeholder="numeroKilos" 
-                id="numeroKilos" 
-                 />
-                 <div *ngIf="numeroKilosFieldInvalid">
-                  <mat-error *ngIf="numeroKilosEntrada?.hasError('required')">
-                    El Número de Kilos es Obligatorio
-                  </mat-error>
-                </div>
+              <input name="numeroKilos" type="text" formControlName="numeroKilos" placeholder="numeroKilos"
+                id="numeroKilos" />
+              <div *ngIf="numeroKilosFieldInvalid">
+                <mat-error *ngIf="numeroKilos?.hasError('required')">
+                  El Número de Kilos es Obligatorio
+                </mat-error>
+              </div>
             </div>
 
 
@@ -134,11 +97,12 @@
           </div>
         </form>
       </div>
-      
+
     </div>
     <div *ngIf="submitted">
       <h3>Creaste un nuevo Registro de Entrada de Alimento!</h3>
       <button class="btn-new" (click)="nuevoEntradaAlimento()">Crear Nueva</button>
+      <button routerLink="/inventario/consultar-entrada" class="btn-new">Ver Registros</button>
     </div>
   </div>
 </div>

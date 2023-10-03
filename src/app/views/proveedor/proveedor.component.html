@@ -3,8 +3,7 @@
     <table id="dataTable" class="table">
       <thead>
         <tr>
-          <th>#</th>
-          <th>Codigo</th>
+          <th>#</th>      
           <th>Nombre</th>
           <th>Apellido</th>
           <th>Teléfono</th>
@@ -18,16 +17,15 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of proveedor; let i = index" class="proveedor-item">
-          <th scope="row">{{ i + 1 }}</th>
-          <td>{{ item.codigo }}</td>
+          <th scope="row">{{ i + 1 }}</th>          
           <td>{{ item.nombre }}</td>
           <td>{{ item.apellido }}</td>
           <td>{{ item.telefono }}</td>
           <td>{{ item.correo }}</td>
           <td>{{ item.direccion }}</td>
           <td>{{ item.razonSocial }}</td>
-          <td>{{ item.tipoProveedor }}</td>
-          <td>{{ item.tipoIdentificacion }}</td>
+          <td>{{ item.tipoProveedor.tipoProveedor }}</td>
+          <td>{{ item.tipoIdentificacion.tipoIdentificacion }}</td>
           <td>{{ item.fechaRegistro }}</td>
           <td><button class="edit" (click)="editarProveedor(item.id)">Editar</button></td>
           <td><button class="delete" (click)="eliminarProveedor(item.id)">Eliminar</button></td>

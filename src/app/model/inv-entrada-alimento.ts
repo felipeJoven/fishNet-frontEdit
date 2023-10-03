@@ -3,8 +3,8 @@ import { TipoAlimento } from "./tipo-alimento";
 
 export class EntradaAlimentos {
 id: number;
-fechaEntrada: number;
-fechaVencimiento:number;
+fechaEntrada: Date;
+fechaVencimiento:Date;
 numeroFactura: number;
 registroIca: string;
 numeroKilos: number;

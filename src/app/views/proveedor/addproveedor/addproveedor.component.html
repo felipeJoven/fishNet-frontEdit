@@ -3,24 +3,14 @@
   <div class="card-body">
     <div *ngIf="!submitted">
       <div class="card-form">
-        <form [formGroup]="formularioCliente" (ngSubmit)="submit()">
+        <form [formGroup]="formulario" (ngSubmit)="submit()">
           <div class="form-row">
-
-            <div class="col-md-6">
-              <label for="codigo">Código</label>
-              <input name="codigo" type="text" formControlName="codigo" placeholder="Código" id="codigo" />
-              <div *ngIf="codigoFieldInvalid">
-                <mat-error *ngIf="codigoCliente?.hasError('required')">
-                  El Código es Obligatorio
-                </mat-error>
-              </div>
-            </div>
 
             <div class="col-md-6">
               <label for="nombre">Nombre</label>
               <input name="nombre" type="text" formControlName="nombre" placeholder="Escribir aquí" id="nombre" />
               <div *ngIf="nombreFieldInvalid">
-                <mat-error *ngIf="nombreCliente?.hasError('required')">
+                <mat-error *ngIf="nombre?.hasError('required')">
                   El Nombre es Obligatorio
                 </mat-error>
               </div>
@@ -30,7 +20,7 @@
               <label for="apellido">Apellido</label>
               <input name="apellido" type="text" formControlName="apellido" placeholder="Escribir aquí" id="apellido" />
               <div *ngIf="apellidoFieldInvalid">
-                <mat-error *ngIf="apellidoCliente?.hasError('required')">
+                <mat-error *ngIf="apellido?.hasError('required')">
                   El Apellido es Obligatorio
                 </mat-error>
               </div>
@@ -40,7 +30,7 @@
               <label for="correo">Correo</label>
               <input name="correo" type="text" formControlName="correo" placeholder="Escribir aquí" id="correo" />
               <div *ngIf="correoFieldInvalid">
-                <mat-error *ngIf="correoCliente?.hasError('required')">
+                <mat-error *ngIf="correo?.hasError('required')">
                   El Correo es Obligatorio
                 </mat-error>
               </div>
@@ -50,7 +40,7 @@
               <label for="telefono">Teléfono</label>
               <input name="telefono" type="text" formControlName="telefono" placeholder="Escribir aquí" id="telefono" />
               <div *ngIf="telefonoFieldInvalid">
-                <mat-error *ngIf="telefonoCliente?.hasError('required')">
+                <mat-error *ngIf="telefono?.hasError('required')">
                   El Teléfono es Obligatorio
                 </mat-error>
               </div>
@@ -61,7 +51,7 @@
               <input name="direccion" type="text" formControlName="direccion" placeholder="Escribir aquí"
                 id="direccion" />
               <div *ngIf="direccionFieldInvalid">
-                <mat-error *ngIf="direccionCliente?.hasError('required')">
+                <mat-error *ngIf="direccion?.hasError('required')">
                   La Dirección es Obligatoria
                 </mat-error>
               </div>
@@ -72,7 +62,7 @@
               <input name="razonSocial" type="text" formControlName="razonSocial" placeholder="Escribir aquí"
                 id="razonSocial" />
               <div *ngIf="razonSocialFieldInvalid">
-                <mat-error *ngIf="razonSocialCliente?.hasError('required')">
+                <mat-error *ngIf="razonSocial?.hasError('required')">
                   La Razón Social es Obligatoria
                 </mat-error>
               </div>
@@ -80,10 +70,14 @@
 
             <div class="col-md-6">
               <label for="tipoProveedor">Tipo de Proveedor</label>
-              <input name="tipoProveedor" type="text" formControlName="tipoProveedor" placeholder="Escribir aquí"
-                id="tipoProveedor" />
-              <div *ngIf="tipoProveedorFieldInvalid">
-                <mat-error *ngIf="tipoProveedorCliente?.hasError('required')">
+              <select name="tipoProveedor" type="text" formControlName="tipoProveedor" id="tipoProveedor">
+                <option>Seleccione un Tipo de Proveedor</option>
+                <option *ngFor="let item of tipoProveedorList" value="{{item.id}}">
+                  {{item.tipoProveedor}}
+                </option>
+              </select>
+              <div *ngIf="tipoIdentificacionFieldInvalid">
+                <mat-error *ngIf="tipoIdentificacion?.hasError('required')">
                   El Tipo de Proveedor es Obligatorio
                 </mat-error>
               </div>
@@ -91,10 +85,14 @@
 
             <div class="col-md-6">
               <label for="tipoIdentificacion">Tipo de Identificación</label>
-              <input name="tipoIdentificacion" type="text" formControlName="tipoIdentificacion"
-                placeholder="Escribir aquí" id="tipoIdentificacion" />
+              <select name="tipoIdentificacion" type="text" formControlName="tipoIdentificacion" id="tipoIdentificacion">
+                <option>Seleccione un Tipo de Identificación</option>
+                <option *ngFor="let item of tipoIdentificacionList" value="{{item.id}}">
+                  {{item.tipoIdentificacion}}
+                </option>
+              </select>
               <div *ngIf="tipoIdentificacionFieldInvalid">
-                <mat-error *ngIf="tipoIdentificacionCliente?.hasError('required')">
+                <mat-error *ngIf="tipoIdentificacion?.hasError('required')">
                   El Tipo de Identificación es Obligatorio
                 </mat-error>
               </div>
@@ -102,10 +100,9 @@
 
             <div class="col-md-6">
               <label for="fechaRegistro">Fecha de Registro</label>
-              <input name="fechaRegistro" type="text" formControlName="fechaRegistro" placeholder="Escribir aquí"
-                id="fechaRegistro" />
+              <input name="fechaRegistro" type="date" formControlName="fechaRegistro" id="fechaRegistro" />
               <div *ngIf="fechaRegistroFieldInvalid">
-                <mat-error *ngIf="fechaRegistroCliente?.hasError('required')">
+                <mat-error *ngIf="fechaRegistro?.hasError('required')">
                   La Fecha de Registro es Obligatoria
                 </mat-error>
               </div>
@@ -117,13 +114,12 @@
           </div>
         </form>
       </div>
-      
+
     </div>
     <div *ngIf="submitted">
       <h3>Creaste un nuevo Proveedor!</h3>
       <button class="btn-new" (click)="nuevoProveedor()">Crear Nueva</button>
+      <button routerLink="/proveedor/consultar" class="btn-new">Ver Registros</button>
     </div>
   </div>
 </div>
-
-          

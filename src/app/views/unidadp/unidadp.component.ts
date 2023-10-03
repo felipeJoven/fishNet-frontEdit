@@ -15,8 +15,8 @@ export class UnidadpComponent implements OnInit{
   unidadp: UnidadProductiva[] = [];
   unidadpr: UnidadProductiva = {
     id: 0,
-    area: 0,
     nombreUnidadP:'',
+    area: 0,
     coordenadas: 0,
     observacion: '',
     profundidad: 0,

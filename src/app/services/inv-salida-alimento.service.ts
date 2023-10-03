@@ -7,7 +7,7 @@ import { SalidaAlimentos } from '../model/inv-salida-alimento'
   providedIn: 'root'
 })
 export class InvSalidaAlimentosmentoService {
-  private apiUrl = 'http://localhost:8080/api/V1/salida-alimento'
+  private apiUrl = 'http://localhost:8080/api/V1/salida-alimentos'
 
   constructor( private http: HttpClient) { }
 

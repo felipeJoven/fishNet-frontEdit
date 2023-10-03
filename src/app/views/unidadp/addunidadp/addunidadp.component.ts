@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UnidadProductivaService } from 'src/app/services/unidad-productiva.service';
 import { Validators, FormBuilder, FormGroup  } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { UnidadProductivaService } from 'src/app/services/unidad-productiva.service';
 
 @Component({
   selector: 'app-addunidadp',
@@ -11,33 +11,41 @@ import { Router } from '@angular/router';
 })
 export class AddunidadpComponent implements OnInit {
 
-  formularioEstanque!: FormGroup;
+  // Propiedades relacionadas al formulario
+  formulario!: FormGroup;
 
-  estanque = {
-    nombreUnidadP: '',
-    area: '',
-    coordenadas: '',
-    observaciones: '',
-    profundidad: '',
-    fechaRegistro: '',
-    available: false
-  };
+  // Listas de opciones
   submitted = false;
+  resultado = "";
+
+
+  ngOnInit(): void {
+    this.buildForm();
+  }
 
 
   constructor(
-    private unidadProductivaService: UnidadProductivaService, 
-    router: Router,
-    private fb: FormBuilder
-    ) { 
-    }
+              private unidadProductivaService: UnidadProductivaService, 
+              private router: Router,
+              private fb: FormBuilder
+             ) { }
 
-    resultado = "";
+    
+
+    submit() {
+      if (this.formulario.valid){
+        console.log("this.formulario.value = ", this.formulario.value);
+        this.crearUnidadP();
+      }else{
+        this.resultado = "Hay datos inválidos en el formulario";
+      }
+    } 
+
 
     private buildForm() {
-      this.formularioEstanque = this.fb.group({
-        area: ['', [Validators.required]],
+      this.formulario = this.fb.group({
         nombreUnidadP: ['', [Validators.required]],
+        area: ['', [Validators.required]],
         coordenadas: ['', [Validators.required]],
         observacion: ['', [Validators.required]],
         profundidad: ['', [Validators.required]],
@@ -46,78 +54,63 @@ export class AddunidadpComponent implements OnInit {
     }
 
     get nombreUnidadPFieldInvalid(){
-      return this.nombreUnidadPEstanque?.touched && this.nombreUnidadPEstanque.invalid;
+      return this.nombreUnidadP?.touched && this.nombreUnidadP.invalid;
     }
 
-    get nombreUnidadPEstanque() {
-      return this.formularioEstanque.get('nombreUnidadP');
+    get nombreUnidadP() {
+      return this.formulario.get('nombreUnidadP');
     }
 
     get areaFieldInvalid(){
-      return this.areaEstanque?.touched && this.areaEstanque.invalid;
+      return this.area?.touched && this.area.invalid;
     }
 
-    get areaEstanque() {
-      return this.formularioEstanque.get('area');
+    get area() {
+      return this.formulario.get('area');
     }
 
     get coordenadasFieldInvalid(){
-      return this.coordenadasEstanque?.touched && this.coordenadasEstanque.invalid;
+      return this.coordenadas?.touched && this.coordenadas.invalid;
     }
 
-    get coordenadasEstanque() {
-      return this.formularioEstanque.get('coordenadas');
+    get coordenadas() {
+      return this.formulario.get('coordenadas');
     }
 
-    get observacionesFieldInvalid(){
-      return this.observacionEstanque?.touched && this.observacionEstanque.invalid;
+    get observacionFieldInvalid(){
+      return this.observacion?.touched && this.observacion.invalid;
     }
 
-    get observacionEstanque() {
-      return this.formularioEstanque.get('observacion');
+    get observacion() {
+      return this.formulario.get('observacion');
     }
 
     get profundidadFieldInvalid(){
-      return this.profundidadEstanque?.touched && this.profundidadEstanque.invalid;
+      return this.profundidad?.touched && this.profundidad.invalid;
     }
 
-    get profundidadEstanque() {
-      return this.formularioEstanque.get('profundidad');
+    get profundidad() {
+      return this.formulario.get('profundidad');
     }
 
     get fechaRegistroFieldInvalid(){
-      return this.fechaRegistroEstanque?.touched && this.fechaRegistroEstanque.invalid;
+      return this.fechaRegistro?.touched && this.fechaRegistro.invalid;
     }
 
-    get fechaRegistroEstanque() {
-      return this.formularioEstanque.get('profundidad');
-    }
-
-
-    submit() {
-      if (this.formularioEstanque.valid){
-        console.log("this.formularioEstanque.value = ", this.formularioEstanque.value);
-        this.crearUnidadP();
-      }else{
-        this.resultado = "Hay datos inválidos en el formulario";
-      }
-    }
-
-  ngOnInit(): void {
-    this.buildForm();
-  }
-  
+    get fechaRegistro() {
+      return this.formulario.get('fechaRegistro');
+    } 
 
 
   crearUnidadP(): void {
     
     const unidadP = {
-      area: this.areaEstanque?.value, 
-      nombreUnidadP: this.nombreUnidadPEstanque?.value,
-      coordenadas: this.coordenadasEstanque?.value,
-      observaciones: this.observacionEstanque?.value,
-      profundidad: this.profundidadEstanque?.value,
-      fechaRegistro: this.fechaRegistroEstanque?.value
+      nombreUnidadP: this.nombreUnidadP?.value,
+      area: this.area?.value, 
+      coordenadas: this.coordenadas?.value,
+      observacion: this.observacion?.value,
+      profundidad: this.profundidad?.value,
+      fechaRegistro: this.fechaRegistro?.value
     };
 
     console.log("unidadP = ", unidadP);
@@ -135,15 +128,7 @@ export class AddunidadpComponent implements OnInit {
 
   nuevaUnidadP(): void {
     this.submitted = false;
-    this.estanque = {
-      nombreUnidadP: '',
-      area: '',
-      coordenadas: '',
-      observaciones: '',
-      profundidad: '',
-      fechaRegistro: '',
-      available: false
-    };
+    this.formulario.reset();
   }
 
 }

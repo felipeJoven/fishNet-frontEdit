@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { TipoIdentificacion } from 'src/app/model/tipo-identificacion';
+import { TipoProveedor } from 'src/app/model/tipo-proveedor';
+
 import { ProveedorService } from 'src/app/services/proveedor.service';
+import { TipoIdentificacionService } from 'src/app/services/tipo-identificacion.service';
+import { TipoProveedorService } from 'src/app/services/tipo-proveedor.service';
 
 @Component({
   selector: 'app-addproveedor',
@@ -10,186 +16,173 @@ import { ProveedorService } from 'src/app/services/proveedor.service';
 })
 export class AddproveedorComponent implements OnInit {
 
-  formularioCliente!: FormGroup;
+  // Propiedades relacionadas al formulario
+  formulario!: FormGroup;
 
-  cliente = {
-    codigo: '',
-    nombre: '',
-    apellido: '',
-    telefono: '',
-    correo: '',
-    direccion: '',
-    razonSocial: '',
-    tipoProveedor: '',
-    tipoIdentificacion: '',
-    fechaRegistro: '',
-    available: false
-  };
   submitted = false;
+  resultado = "";
+
+  // Listas de opciones
+  tipoProveedorList: any;
+  tipoIdentificacionList: any;
+
 
   constructor(
-    private proveedorService: ProveedorService, 
+    private proveedorService: ProveedorService,
+    private tipoProveedorService: TipoProveedorService,
+    private tipoIdentificacionService: TipoIdentificacionService,
     router: Router,
     private fb: FormBuilder
-    ) { 
-    }
-
-    resultado = "";
-
-    private buildForm() {
-      this.formularioCliente = this.fb.group({
-        codigo: ['', [Validators.required]],
-        nombre: ['', [Validators.required]],
-        apellido: ['', [Validators.required]],
-        telefono: ['', [Validators.required]],
-        correo: ['', [Validators.required]],
-        direccion: ['', [Validators.required]],
-        razonSocial: ['', [Validators.required]],
-        tipoProveedor: ['', [Validators.required]],
-        tipoIdentificacion: ['', [Validators.required]],
-        fechaRegistro: ['', [Validators.required]],
-      });
-    }
-
-    get codigoFieldInvalid(){
-      return this.codigoCliente?.touched && this.codigoCliente.invalid;
-    }
-
-    get codigoCliente() {
-      return this.formularioCliente.get('codigo');
-    }
-
-    get nombreFieldInvalid(){
-      return this.nombreCliente?.touched && this.nombreCliente.invalid;
-    }
-
-    get nombreCliente() {
-      return this.formularioCliente.get('nombre');
-    }
-
-    get apellidoFieldInvalid(){
-      return this.apellidoCliente?.touched && this.apellidoCliente.invalid;
-    }
-
-    get apellidoCliente() {
-      return this.formularioCliente.get('apellido');
-    }
-
-    get telefonoFieldInvalid(){
-      return this.telefonoCliente?.touched && this.telefonoCliente.invalid;
-    }
-
-    get telefonoCliente() {
-      return this.formularioCliente.get('telefono');
-    }
-
-    get correoFieldInvalid(){
-      return this.correoCliente?.touched && this.correoCliente.invalid;
-    }
-
-    get correoCliente() {
-      return this.formularioCliente.get('correo');
-    }
-
-    get direccionFieldInvalid(){
-      return this.direccionCliente?.touched && this.direccionCliente.invalid;
-    }
-
-    get direccionCliente() {
-      return this.formularioCliente.get('direccion');
-    }
-
-    get razonSocialFieldInvalid(){
-      return this.razonSocialCliente?.touched && this.razonSocialCliente.invalid;
-    }
-
-    get razonSocialCliente() {
-      return this.formularioCliente.get('razonSocial');
-    }
-
-    get tipoProveedorFieldInvalid(){
-      return this.tipoProveedorCliente?.touched && this.tipoProveedorCliente.invalid;
-    }
-
-    get tipoProveedorCliente() {
-      return this.formularioCliente.get('tipoProveedor');
-    }
-
-    get tipoIdentificacionFieldInvalid(){
-      return this.tipoIdentificacionCliente?.touched && this.tipoIdentificacionCliente.invalid;
-    }
-
-    get tipoIdentificacionCliente() {
-      return this.formularioCliente.get('tipoIdentificacion');
-    }
-
-    get fechaRegistroFieldInvalid(){
-      return this.fechaRegistroCliente?.touched && this.fechaRegistroCliente.invalid;
-    }
-
-    get fechaRegistroCliente() {
-      return this.formularioCliente.get('fechaRegistro');
-    }
+  ) { }
 
 
-    submit() {
-      if (this.formularioCliente.valid){
-        console.log("this.formularioCliente.value = ", this.formularioCliente.value);
-        this.crearProveedor();
-      }else{
-        this.resultado = "Hay datos inválidos en el formulario";
-      }
-    }
+  ngOnInit(): void {
+    this.buildForm();
 
-    ngOnInit(): void {
-      this.buildForm();
-    }
+    this.tipoProveedorService.obtenerTipoProveedor().subscribe((tipoProveedor: TipoProveedor[]) => {
+      this.tipoProveedorList = tipoProveedor;
+    });
+    this.tipoIdentificacionService.obtenerTipoIdentificacion().subscribe((tipoIdentificacion: TipoIdentificacion[]) => {
+      this.tipoIdentificacionList = tipoIdentificacion;
+    });
+  }
 
 
-    crearProveedor(): void {
-    
-      const proveedor = {
-        codigo: this.codigoCliente?.value,
-        nombre: this.nombreCliente?.value,
-        apellido: this.apellidoCliente?.value,
-        telefono: this.telefonoCliente?.value,
-        correo: this.correoCliente?.value,
-        direccion: this.direccionCliente?.value,
-        razonSocial: this.razonSocialCliente?.value,
-        tipoProveedor: this.tipoProveedorCliente?.value,
-        tipoIdentificacion: this.tipoIdentificacionCliente?.value,
-        fechaRegistro: this.fechaRegistroCliente?.value        
-      };
+  get nombreFieldInvalid() {
+    return this.nombre?.touched && this.nombre.invalid;
+  }
+
+  get nombre() {
+    return this.formulario.get('nombre');
+  }
+
+  get apellidoFieldInvalid() {
+    return this.apellido?.touched && this.apellido.invalid;
+  }
+
+  get apellido() {
+    return this.formulario.get('apellido');
+  }
+
+  get telefonoFieldInvalid() {
+    return this.telefono?.touched && this.telefono.invalid;
+  }
+
+  get telefono() {
+    return this.formulario.get('telefono');
+  }
+
+  get correoFieldInvalid() {
+    return this.correo?.touched && this.correo.invalid;
+  }
+
+  get correo() {
+    return this.formulario.get('correo');
+  }
+
+  get direccionFieldInvalid() {
+    return this.direccion?.touched && this.direccion.invalid;
+  }
+
+  get direccion() {
+    return this.formulario.get('direccion');
+  }
+
+  get razonSocialFieldInvalid() {
+    return this.razonSocial?.touched && this.razonSocial.invalid;
+  }
+
+  get razonSocial() {
+    return this.formulario.get('razonSocial');
+  }
+
+  get tipoProveedorFieldInvalid() {
+    return this.tipoProveedor?.touched && this.tipoProveedor.invalid;
+  }
+
+  get tipoProveedor() {
+    return this.formulario.get('tipoProveedor');
+  }
+
+  get tipoIdentificacionFieldInvalid() {
+    return this.tipoIdentificacion?.touched && this.tipoIdentificacion.invalid;
+  }
+
+  get tipoIdentificacion() {
+    return this.formulario.get('tipoIdentificacion');
+  }
+
+  get fechaRegistroFieldInvalid() {
+    return this.fechaRegistro?.touched && this.fechaRegistro.invalid;
+  }
+
+  get fechaRegistro() {
+    return this.formulario.get('fechaRegistro');
+  }
   
-      console.log("proveedor = ", proveedor);
-  
-      this.proveedorService.agregarProveedor(proveedor)
-        .subscribe(
-          response => {
-            console.log(response);
-            this.submitted = true;
-          },
-          error => {
-            console.log(error);
-          });
+
+  private buildForm() {
+    this.formulario = this.fb.group({
+      nombre: ['', [Validators.required]],
+      apellido: ['', [Validators.required]],
+      telefono: ['', [Validators.required]],
+      correo: ['', [Validators.required]],
+      direccion: ['', [Validators.required]],
+      razonSocial: ['', [Validators.required]],
+      tipoProveedor: ['', [Validators.required]],
+      tipoIdentificacion: ['', [Validators.required]],
+      fechaRegistro: ['', [Validators.required]],
+    });
+  }
+
+
+  submit() {
+    if (this.formulario.valid) {
+      console.log("this.formulario.value = ", this.formulario.value);
+      this.crearProveedor();
+    } else {
+      this.resultado = "Hay datos inválidos en el formulario";
     }
-  
-    nuevoProveedor(): void {
-      this.submitted = false;
-      this.cliente = {
-        codigo: '',
-        nombre: '',
-        apellido: '',
-        telefono: '',
-        correo: '',
-        direccion: '',
-        razonSocial: '',
-        tipoProveedor: '',
-        tipoIdentificacion: '',
-        fechaRegistro: '',
-        available: false
-      };
-    }
-  
+  }
+
+
+  crearProveedor(): void {
+
+    let tipoProveedor: TipoProveedor = new TipoProveedor();
+    tipoProveedor.id = this.tipoProveedor?.value;
+
+    let tipoIdentificacion: TipoIdentificacion = new TipoIdentificacion();
+    tipoIdentificacion.id = this.tipoIdentificacion?.value;
+
+
+    const proveedor = {
+      nombre: this.nombre?.value,
+      apellido: this.apellido?.value,
+      telefono: this.telefono?.value,
+      correo: this.correo?.value,
+      direccion: this.direccion?.value,
+      razonSocial: this.razonSocial?.value,
+      fechaRegistro: this.fechaRegistro?.value,
+      tipoProveedor: tipoProveedor,
+      tipoIdentificacion: tipoIdentificacion
+    };
+
+    console.log("proveedor = ", proveedor);
+
+    this.proveedorService.agregarProveedor(proveedor)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.submitted = true;
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
+  nuevoProveedor(): void {
+    this.submitted = false;
+    this.formulario.reset();
+  }
 
 }
