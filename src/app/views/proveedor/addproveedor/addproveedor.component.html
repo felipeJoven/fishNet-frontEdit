@@ -76,8 +76,8 @@
                   {{item.tipoProveedor}}
                 </option>
               </select>
-              <div *ngIf="tipoIdentificacionFieldInvalid">
-                <mat-error *ngIf="tipoIdentificacion?.hasError('required')">
+              <div *ngIf="tipoProveedorFieldInvalid">
+                <mat-error *ngIf="tipoProveedor?.hasError('required')">
                   El Tipo de Proveedor es Obligatorio
                 </mat-error>
               </div>

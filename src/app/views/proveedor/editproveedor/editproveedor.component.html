@@ -1,4 +1,4 @@
- <div class="container">
+<!-- <div class="container">
         <h2>Editar Proveedor</h2>
         <form (ngSubmit)="guardarCambiosProveedor()" #editarForm="ngForm">
 
@@ -50,4 +50,90 @@
           
           <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
-      </div>
+      </div> -->
+
+<div class="card">
+  <div class="card-h1">Editar Proveedor</div>
+  <div class="card-body">
+    <div class="card-form">
+      <form (ngSubmit)="guardarCambiosProveedor()" #editarForm="ngForm" [formGroup]="formulario">
+        <div class="form-row">
+
+          <div class="col-md-6">
+            <label>Nombre</label>
+            <input type="text" formControlName="nombre" id="nombre"  name="nombre" required>
+            <div *ngIf="nombreFieldInvalid">
+              <mat-error *ngIf="nombre?.hasError('required')">
+                El Nombre es obligatorio
+              </mat-error>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label>Apellido</label>
+            <input type="text" formControlName="apellido" id="apellido"  name="apeliido" required>
+            <div *ngIf="apellidoFieldInvalid">
+              <mat-error *ngIf="apellido?.hasError('required')">
+                El apellido es obligatorio
+              </mat-error>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label>Direccion</label>
+            <input type="text" formControlName="direccion" id="direccion"  name="direccion" required>
+            <div *ngIf="telefonoFieldInvalid">
+              <mat-error *ngIf="telefono?.hasError('required')">
+                El telefono es obligatorio
+              </mat-error>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label>Teléfono</label>
+            <input type="text" formControlName="telefono" id="telefono"  name="telefono" required>
+            <div *ngIf="telefonoFieldInvalid">
+              <mat-error *ngIf="telefono?.hasError('required')">
+                El telefono es obligatorio
+              </mat-error>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label>Correo</label>
+            <input type="text" formControlName="correo" id="correo"  name="correo" required>
+            <div *ngIf="correoFieldInvalid">
+              <mat-error *ngIf="correo?.hasError('required')">
+                El correo es obligatorio
+              </mat-error>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label>Razon Social</label>
+            <input type="text" formControlName="razonSocial" id="razonSocial"  name="razonSocial" required>
+            <div *ngIf="razonSocialFieldInvalid">
+              <mat-error *ngIf="razonSocial?.hasError('required')">
+                la razon social es obligatoria
+              </mat-error>
+            </div>
+          </div>
+          
+          
+
+          <div class="col-md-6">
+            <label>Fecha Registro</label>
+            <input type="date" formControlName="fechaRegistro" id="fechaRegistro"  name="fechaRegistro" required>
+            <div *ngIf="fechaRegistroFieldInvalid">
+              <mat-error *ngIf="fechaRegistro?.hasError('required')">
+                la fecha es obligatoria
+              </mat-error>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-new" [disabled]="!formulario.valid">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

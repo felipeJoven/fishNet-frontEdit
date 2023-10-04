@@ -1,76 +1,78 @@
 <div class="card">
   <div class="card-h1">Editar Unidad Productiva</div>
-    <div class="card-body">
-      <div class="card-form">
+  <div class="card-body">
+    <div class="card-form">
       <form (ngSubmit)="guardarCambiosUnidadProductiva()" #editarForm="ngForm" [formGroup]="formulario">
         <div class="form-row">
 
-            <div class="col-md-6">
-              <label for="nombreUnidadP">Unidad Productiva</label>
-              <input name="nombreUnidadP" type="text" formControlName="nombreUnidadP" placeholder="Escribir aquí"
-                id="nombreUnidadP" />
-              <div *ngIf="nombreUnidadPFieldInvalid">
-                <mat-error *ngIf="nombreUnidadP?.hasError('required')">
-                  La Unidad Productiva es Obligatoria
-                </mat-error>
-              </div>
+          <div class="col-md-6">
+            <label for="nombreUnidadP">Unidad Productiva</label>
+            <input name="nombreUnidadP" type="text" formControlName="nombreUnidadP" placeholder="Escribir aquí"
+              id="nombreUnidadP" />
+            <div *ngIf="nombreUnidadPFieldInvalid">
+              <mat-error *ngIf="nombreUnidadP?.hasError('required')">
+                La Unidad Productiva es Obligatoria
+              </mat-error>
+            </div>
+          </div>
+
+
+          <div class="col-md-6">
+            <label for="coordenadas">Coordenadas</label>
+            <input name="coordenadas" type="text" formControlName="coordenadas" placeholder="Escribir aquí"
+              id="coordenadas" />
+            <div *ngIf="coordenadasFieldInvalid">
+              <mat-error *ngIf="coordenadas?.hasError('required')">
+                La Coordenada es Obligatoria
+              </mat-error>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label for="observacion">Observación</label>
+            <input name="observacion" type="text" formControlName="observacion" placeholder="Escribir aquí"
+              id="observacion" />
+            <div *ngIf="observacionFieldInvalid">
+              <mat-error *ngIf="observacion?.hasError('required')">
+                Las observaciones son Obligatorias
+              </mat-error>
             </div>
 
-            
-            <div class="col-md-6">
-              <label for="coordenadas">Coordenadas</label>
-              <input name="coordenadas" type="text" formControlName="coordenadas" placeholder="Escribir aquí"
-                id="coordenadas" />
-              <div *ngIf="coordenadasFieldInvalid">
-                <mat-error *ngIf="coordenadas?.hasError('required')">
-                  La Coordenada es Obligatoria
-                </mat-error>
-              </div>
+          </div>
+          <div class="col-md-6">
+            <label for="area">Area</label>
+            <input name="area" type="text" formControlName="area" placeholder="Escribir aquí" id="area" />
+            <div *ngIf="areaFieldInvalid">
+              <mat-error *ngIf="area?.hasError('required')">
+                El area es Obligatoria
+              </mat-error>
             </div>
+          </div>
 
-            <div class="col-md-6">
-              <label for="observacion">Observación</label>
-              <input name="observacion" type="text" formControlName="observacion" placeholder="Escribir aquí"
-                id="observacion" />
-              <div *ngIf="observacionFieldInvalid">
-                <mat-error *ngIf="observacion?.hasError('required')">
-                  Las observaciones son Obligatorias
-                </mat-error>
-              </div>
-
+          <div class="col-md-6">
+            <label for="profundidad">Profundiad</label>
+            <input name="profundidad" type="text" formControlName="profundidad" placeholder="Escribir aquí"
+              id="profundidad" />
+            <div *ngIf="profundidadFieldInvalid">
+              <mat-error *ngIf="profundidad?.hasError('required')">
+                La profundidad es Obligatoria
+              </mat-error>
             </div>
-            <div class="col-md-6">
-              <label for="area">Area</label>
-              <input name="area" type="text" formControlName="area" placeholder="Escribir aquí" id="area" />
-              <div *ngIf="areaFieldInvalid">
-                <mat-error *ngIf="area?.hasError('required')">
-                  El area es Obligatoria
-                </mat-error>
-              </div>
+          </div>
+
+          <div class="col-md-6">
+            <label for="fechaRegistro">Registro de Unidad Productiva</label>
+            <input name="fechaRegistro" type="date" formControlName="fechaRegistro" id="fechaRegistro" />
+            <div *ngIf="fechaRegistroFieldInvalid">
+              <mat-error *ngIf="fechaRegistro?.hasError('required')">
+                La fecha es Obligatoria
+              </mat-error>
             </div>
+          </div>
 
-            <div class="col-md-6">
-              <label for="profundidad">Profundiad</label>
-              <input name="profundidad" type="text" formControlName="profundidad" placeholder="Escribir aquí"
-                id="profundidad" />
-              <div *ngIf="profundidadFieldInvalid">
-                <mat-error *ngIf="profundidad?.hasError('required')">
-                  La profundidad es Obligatoria
-                </mat-error>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <label for="fechaRegistro">Registro de Unidad Productiva</label>
-              <input name="fechaRegistro" type="date" formControlName="fechaRegistro" id="fechaRegistro" />
-              <div *ngIf="fechaRegistroFieldInvalid">
-                <mat-error *ngIf="fechaRegistro?.hasError('required')">
-                  La fecha es Obligatoria
-                </mat-error>
-              </div>
-            </div>        
-
-      <button type="submit" class="btn btn-new" [disabled]="!formulario.valid">Guardar</button>
+          <button type="submit" class="btn btn-new" [disabled]="!formulario.valid">Guardar</button>
+        </div>
+      </form>
     </div>
-  </form>
+  </div>
 </div>
