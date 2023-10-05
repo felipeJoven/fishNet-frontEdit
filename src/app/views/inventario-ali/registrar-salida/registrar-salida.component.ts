@@ -104,3 +104,5 @@ export class RegistrarSalidaComponent implements OnInit {
   
 }
 
+
+
