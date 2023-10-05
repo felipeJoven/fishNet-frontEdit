@@ -1,23 +1,43 @@
 <div class="card">
   <div class="card-h1">Inventario de Alimento</div>
   <div class="card-body">
+    <div *ngIf="!submitted">
     <div class="card-form">
-      <form action="">
+      <form [formGroup]="formulario" (ngSubmit)="submit()">
         <h3>Registrar salida de alimento</h3>
         <div class="form-row">
+
           <div class="col-md-6">
-            <label for="date">Fecha</label>
-            <input type="date">
+            <label for="fechaSalida">Fecha de Salida</label>
+            <input name="fechaSalida" type="date" formControlName="fechaSalida" id="fechaSalida">
+            <div *ngIf="fechaSalidaFieldInvalid">
+              <mat-error *ngIf="fechaSalida?.hasError('required')">
+                La Fecha es Obligatoria
+              </mat-error>
+            </div>
           </div>
+
           <div class="col-md-6">
-            <label for="tipo_alimento">Numero de factura</label>
-            <input placeholder="Numero de factura">
+            <label for="numeroFactura">Numero de factura</label>
+            <input name="numeroFactura" type="text" formControlName="numeroFactura" placeholder="Numero de factura">
+            <div *ngIf="numeroFacturaFieldInvalid">
+              <mat-error *ngIf="numeroFactura?.hasError('required')">
+                El numero de factura es Obligatoria
+              </mat-error>
+            </div>
           </div>
+
           <div class="col-md-6">
-            <label for="numero-kilo">Numero de Kilos</label>
-            <input placeholder="Numero de Kilos">
+            <label for="numeroKilos">Numero de kilos</label>
+            <input name="numeroKilos" type="text" formControlName="numeroKilos" placeholder="Numero de factura">
+            <div *ngIf="numeroKilosFieldInvalid">
+              <mat-error *ngIf="numeroKilos?.hasError('required')">
+                El numero de kilos es Obligatoria
+              </mat-error>
+            </div>
           </div>
-          <div class="col-md-6">
+
+          <!-- <div class="col-md-6">
             <label for="unidad-productiva">Unidad Productiva</label>
             <select class="form-select">
               <option selected>Selecciona una Opcion</option>
@@ -25,11 +45,28 @@
               <option value="2">Two</option>
               <option value="3">Three</option>
             </select>
+          </div> -->
+
+          <div class="col-md-6">
+            <label for="lote">Lote</label>
+            <select name="lote" type="text" formControlName="lote" id="lote">
+              <option>Selecionar Lote</option>
+              <option *ngFor="let item of LoteList" value="{{item.id}}">
+                {{item.nombreLote}}
+              </option>
+            </select>
+              <div *ngIf="loteFieldInvalid">
+                <mat-error *ngIf="lote?.hasError('required')">
+                  El lote es Obligatorio
+                </mat-error>
+              </div>
           </div>
+
+        </div>
+        <div class="container-btn">
+          <button class="btn">Guardar</button>
         </div>
       </form>
-      <div class="container-btn">
-        <button class="btn">Guardar</button>
       </div>
     </div>
   </div>

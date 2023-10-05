@@ -6,7 +6,7 @@ import { SalidaAlimentos } from '../model/inv-salida-alimento'
 @Injectable({
   providedIn: 'root'
 })
-export class InvSalidaAlimentosmentoService {
+export class InvSalidaAlimentosService {
   private apiUrl = 'http://localhost:8080/api/V1/salida-alimentos'
 
   constructor( private http: HttpClient) { }

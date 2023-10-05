@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SalidaAlimentos } from 'src/app/model/inv-salida-alimento';
-import { InvSalidaAlimentosmentoService } from 'src/app/services/inv-salida-alimento.service';
+import { InvSalidaAlimentosService } from 'src/app/services/inv-salida-alimento.service';
 
 
 @Component({
@@ -14,7 +14,7 @@ export class ConsultarSalidaComponent {
 
   salidaAlimento: SalidaAlimentos[] = [];
 
-  constructor(private invSalidaAlimentosmentoService:InvSalidaAlimentosmentoService, private dialog: MatDialog, private route: ActivatedRoute, private router: Router) { }
+  constructor(private invSalidaAlimentosService:InvSalidaAlimentosService, private dialog: MatDialog, private route: ActivatedRoute, private router: Router) { }
   ngOnInit(): void {
     this.obtenerSalidaAlimento();
   }
@@ -22,7 +22,7 @@ export class ConsultarSalidaComponent {
     // Servicios
 
     obtenerSalidaAlimento():void{
-  this.invSalidaAlimentosmentoService.obtenerSalidaAlimentos().subscribe(entradaAlimento => {
+  this.invSalidaAlimentosService.obtenerSalidaAlimentos().subscribe(entradaAlimento => {
 
     this.salidaAlimento = entradaAlimento;
     console.log(this.salidaAlimento);
@@ -36,7 +36,7 @@ actualizarSalidaAlimentos(id: number):void{
 }
 
 eliminarSalidaAlimentos(id: number) {
-  this.invSalidaAlimentosmentoService.eliminarSalidaAlimentos(id)
+  this.invSalidaAlimentosService.eliminarSalidaAlimentos(id)
   .subscribe(respuesta => {
     console.log(respuesta);
     this.obtenerSalidaAlimento();
