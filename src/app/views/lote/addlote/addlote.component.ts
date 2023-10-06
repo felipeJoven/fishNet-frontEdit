@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { Especies } from 'src/app/model/especies';
+import { Proveedor } from 'src/app/model/proveedor';
+import { UnidadProductiva } from 'src/app/model/unidad-productiva';
+
 import { LoteService } from 'src/app/services/lote.service';
 import { ProveedorService } from 'src/app/services/proveedor.service';
 import { EspeciesService } from 'src/app/services/especies.service';
-import { Especies } from 'src/app/model/especies';
 import { UnidadProductivaService } from 'src/app/services/unidad-productiva.service';
-import { Proveedor } from 'src/app/model/proveedor';
-import { UnidadProductiva } from 'src/app/model/unidad-productiva';
+
 
 @Component({
   selector: 'app-addlote',
@@ -25,6 +27,7 @@ export class AddLoteComponent implements OnInit{
   submitted = false;
   resultado = "";
   
+  // Listas de opciones
   EspeciesList: any;
   ProveedorList: any;
   UnidadPList: any;
@@ -55,84 +58,83 @@ export class AddLoteComponent implements OnInit{
   }
   
 
-    get nombreLoteFieldInvalid(){
-      return this.nombreLote?.touched && this.nombreLote.invalid;
-    }
-    get nombreLote(){
-      return this.formulario.get('nombreLote');
-    }
+  get nombreLoteFieldInvalid(){
+    return this.nombreLote?.touched && this.nombreLote.invalid;
+  }
+  get nombreLote(){
+    return this.formulario.get('nombreLote');
+  }
 
-    get fechaSiembraFieldInvalid(){
-      return this.fechaSiembra?.touched && this.fechaSiembra.invalid;
-    }
+  get fechaSiembraFieldInvalid(){
+    return this.fechaSiembra?.touched && this.fechaSiembra.invalid;
+  }
 
-    get fechaSiembra(){
-      return this.formulario.get('fechaSiembra');
-    }
+  get fechaSiembra(){
+    return this.formulario.get('fechaSiembra');
+  }
 
-    get diasCultivoFieldInvalid(){
-      return this.diasCultivo?.touched && this.diasCultivo.invalid;
-    }
+  get diasCultivoFieldInvalid(){
+    return this.diasCultivo?.touched && this.diasCultivo.invalid;
+  }
 
-    get diasCultivo(){
-      return this.formulario.get('diasCultivo');
-    }
+  get diasCultivo(){
+    return this.formulario.get('diasCultivo');
+  }
 
-    get numeroAnimalesFieldInvalid(){
-      return this.numeroAnimales?.touched && this.numeroAnimales.invalid;
-    }
+  get numeroAnimalesFieldInvalid(){
+    return this.numeroAnimales?.touched && this.numeroAnimales.invalid;
+  }
 
-    get numeroAnimales(){
-      return this.formulario.get('numeroAnimales');
-    }
+  get numeroAnimales(){
+    return this.formulario.get('numeroAnimales');
+  }
 
-    get proveedorFieldInvalid(){
-      return this.proveedor?.touched && this.proveedor.invalid;
-    }
+  get proveedorFieldInvalid(){
+    return this.proveedor?.touched && this.proveedor.invalid;
+  }
 
-    get proveedor(){
-      return this.formulario.get('proveedor');
-    }
+  get proveedor(){
+    return this.formulario.get('proveedor');
+  }
 
-    get especiesFieldInvalid(){
-      return this.especies?.touched && this.especies.invalid;
-    }
+  get especiesFieldInvalid(){
+    return this.especies?.touched && this.especies.invalid;
+  }
 
-    get especies(){
-      return this.formulario.get('especies');
-    }
+  get especies(){
+    return this.formulario.get('especies');
+  }
 
-    get unidadPFieldInvalid(){
-      return this.unidadP?.touched && this.unidadP.invalid;
-    }
+  get unidadPFieldInvalid(){
+    return this.unidadP?.touched && this.unidadP.invalid;
+  }
 
-    get unidadP(){
-      return this.formulario.get('unidadP');
-    }
-
-
-    submit(){
-      if (this.formulario.valid){
-        console.log("tis.formulario.value = ", this.formulario.value);
-        this.crearLote();
-      }else{
-        this.resultado = "Hay datos inválidos en el formulario";
-      }
-    }
+  get unidadP(){
+    return this.formulario.get('unidadP');
+  }
 
 
-    private buildForm() {
-      this.formulario = this.fb.group({
-        nombreLote: ['', [Validators.required]],
-        fechaSiembra: ['', [Validators.required]],
-        diasCultivo: ['', [Validators.required]],
-        numeroAnimales: ['', [Validators.required]],
-        proveedor: ['', [Validators.required]],
-        especies: ['', [Validators.required]],
-        unidadP: ['', [Validators.required]]
-  
-      });
+  private buildForm() {
+    this.formulario = this.fb.group({
+      nombreLote: ['', [Validators.required]],
+      fechaSiembra: ['', [Validators.required]],
+      diasCultivo: ['', [Validators.required]],
+      numeroAnimales: ['', [Validators.required]],
+      proveedor: ['', [Validators.required]],
+      especies: ['', [Validators.required]],
+      unidadP: ['', [Validators.required]]
+    });
+  }
+
+
+  submit(){
+    if (this.formulario.valid){
+      console.log("this.formulario.value = ", this.formulario.value);
+      this.crearLote();
+    }else{
+      this.resultado = "Hay datos inválidos en el formulario";
     }
+  }
   
 
   crearLote(): void{

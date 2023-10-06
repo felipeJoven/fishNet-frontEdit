@@ -6,6 +6,8 @@ import { AddLoteComponent } from './addlote/addlote.component';
 import { ConsultarLoteComponent } from './consultar-lote/consultar-lote.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 @NgModule({
@@ -18,7 +20,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     LoteRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDialogModule
   ]
 })
 export class LoteModule { }

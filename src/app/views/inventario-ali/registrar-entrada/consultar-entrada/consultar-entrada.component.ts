@@ -12,22 +12,13 @@ import { InvEntradaAlimentoService } from 'src/app/services/inv-entrada-alimento
 export class ConsultarEntradaComponent implements OnInit {
 
   entradaAlimento: EntradaAlimentos[] = [];
- /*  entradaAlimentopr: EntradaAlimentos = {
-    id: 0,
-    fecha: 0,
-    fechaVencimiento:0,
-    numeroFactura: 0,
-    registroIca: "",
-    numeroKilos: 0
-    } */
 
     constructor(
                 private invEntradaAlimentoService: InvEntradaAlimentoService, 
                 private dialog: MatDialog, 
                 private route: ActivatedRoute, 
                 private router: Router
-                ) 
-                { }
+                ) { }
 
     ngOnInit(): void {
       this.obtenerEntradaAlimento();

@@ -2,7 +2,7 @@
   <div class="card-h1">Crear Lote</div>
   <div class="card-body">
     <div *ngIf="!submitted">
-      <div class="card-form">   
+      <div class="card-form">
         <form [formGroup]="formulario" (ngSubmit)="submit()">
           <div class="form-row">
             
@@ -27,7 +27,7 @@
             </div>
 
             <div class="col-md-6">
-              <label for="diasCultivo">Dias Cultivados</label>
+              <label for="diasCultivo">Días de Cultivo</label>
               <input name="diasCultivo" type="text" formControlName="diasCultivo" id="diasCultivo" />
               <div *ngIf="diasCultivoFieldInvalid">
                 <mat-error *ngIf="diasCultivo?.hasError('required')">
@@ -79,7 +79,7 @@
             <div class="col-md-6">
               <label for="unidadP">Unidad Productiva</label>
               <select name="unidadP" type="text" formControlName="unidadP" id="unidadP">
-                <option>Seleccione una Unidad Productiva</option>
+                <option>Seleccione una Especie</option>
                 <option *ngFor="let item of UnidadPList" value="{{item.id}}">
                   {{item.nombreUnidadP}}
                 </option>
@@ -93,7 +93,7 @@
 
           </div>
           <div class="container-btn">
-            <button class="btn-new" type="submit">Guardar</button>
+            <button class="btn btn-new" type="submit" [disabled]="!formulario.valid">Guardar</button>
           </div>
         </form>
       </div>
@@ -102,6 +102,7 @@
     <div *ngIf="submitted">
       <h3>Creaste un nuevo Lote!</h3>
       <button class="btn-new" (click)="nuevoLote()">Crear Nuevo</button>
+      <button routerLink="/lote/consultar-lote" class="btn-new">Ver Registros</button>
     </div> 
   </div>
 </div>
