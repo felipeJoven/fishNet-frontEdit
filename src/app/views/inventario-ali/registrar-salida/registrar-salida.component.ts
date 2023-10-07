@@ -76,7 +76,7 @@ export class RegistrarSalidaComponent implements OnInit {
       fechaSalida: ['',[Validators.required]],
       numeroFactura: ['',[Validators.required]],
       numeroKilos: ['',[Validators.required]],
-      unidadP: ['',[Validators.required]],
+      lote: ['',[Validators.required]],
     });
   }
 
@@ -99,8 +99,24 @@ export class RegistrarSalidaComponent implements OnInit {
       numeroFactura: this.numeroFactura?.value,
       numeroKilos: this.numeroKilos?.value,
       lote: lote
-    }
-  };
+    };
+
+    console.log("salida = ", salida);
+
+    this.invSalidaAlimentosService.agregarSalidaAlimentos(salida).subscribe(
+      response => {
+        console.log(response);
+        this.submitted = true;
+      },
+    error => {
+      console.log(error);
+    });
+  }
+
+  nuevaSalida():void{
+    this.submitted = false;
+    this.formulario.reset();
+  }
   
 }
 

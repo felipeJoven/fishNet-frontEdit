@@ -10,7 +10,7 @@ import { InvSalidaAlimentosService } from 'src/app/services/inv-salida-alimento.
   templateUrl: './consultar-salida.component.html',
   styleUrls: ['./consultar-salida.component.scss']
 })
-export class ConsultarSalidaComponent {
+export class ConsultarSalidaComponent implements OnInit{
 
   salidaAlimento: SalidaAlimentos[] = [];
 

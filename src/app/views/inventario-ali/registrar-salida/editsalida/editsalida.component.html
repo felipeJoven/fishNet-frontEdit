@@ -1,1 +1,30 @@
-<p>ceditar-salida works!</p>
+<div class="container">
+    <h2>Editar Salida de Alimentos</h2>
+    <form (ngSubmit)="guardarCambiosSalidaAli()" #editarForm="ngForm">
+
+      <div class="form-group">
+        <label>Fecha</label>
+        <input type="text" class="form-control" id="fecha" [(ngModel)]="salidaAlimentos.fechaSalida" name="codigo" required>
+      </div>
+
+
+      <div class="form-group">
+        <label>Número de Factura</label>
+        <input type="text" class="form-control" id="numeroFactura" [(ngModel)]="salidaAlimentos.numeroFactura" name="numeroFactura" required>
+      </div>
+
+
+      <div class="form-group">
+        <label>Número de Kilos</label>
+        <input type="text" class="form-control" id="numeroKilos" [(ngModel)]="salidaAlimentos.numeroKilos" name="numeroKilos" required>
+      </div>
+
+      <div class="form-group">
+        <label>Lote</label>
+        <input type="text" class="form-control" id="registroIca" [(ngModel)]="salidaAlimentos.lote" name="registroIca" required>
+      </div>
+
+      
+      <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+  </div>
