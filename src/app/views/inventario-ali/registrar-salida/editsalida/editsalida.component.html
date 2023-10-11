@@ -1,30 +1,58 @@
-<div class="container">
-    <h2>Editar Salida de Alimentos</h2>
-    <form (ngSubmit)="guardarCambiosSalidaAli()" #editarForm="ngForm">
+  <div class="card">
+    <div class="card-h1">Editar Salida de Alimento</div>
+    <div class="card-body">
+      <div class="card-form">
+        <form (ngSubmit)="guardarCambiosSalidaAli()" #editarForm="ngForm" [formGroup]="formulario" >
+          <div class="form-row">
 
-      <div class="form-group">
-        <label>Fecha</label>
-        <input type="text" class="form-control" id="fecha" [(ngModel)]="salidaAlimentos.fechaSalida" name="codigo" required>
+            <div class="col-md-6">
+              <label for="numeroFactura">Numero de Factura</label>
+              <input name="numeroFactura" type="text" formControlName="numeroFactura" placeholder="Escribir aqui"
+              id="numeroFactura">
+              <div *ngIf="numeroFacturaFieldInvalid">
+                <mat-error *ngIf="numeroFactura?.hasError('required')">
+                  El numero de factura es Obligatoria
+                </mat-error>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="numeroKilos">Numero de Kilos</label>
+              <input name="numeroKilos" type="text" formControlName="numeroKilos" placeholder="Escribir aqui"
+              id="numeroFactura">
+              <div *ngIf="numeroKilosFieldInvalid">
+                <mat-error *ngIf="numeroKilos?.hasError('required')">
+                  El numero de kilos es Obligatoria
+                </mat-error>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="fechaSalida">Fecha de Salida</label>
+              <input name="fechaSalida" type="date" formControlName="fechaSalida" placeholder="Escribir aqui"
+              id="numeroFactura">
+              <div *ngIf="fechaSalidaFieldInvalid">
+                <mat-error *ngIf="fechaSalida?.hasError('required')">
+                  La fecha es Obligatoria
+                </mat-error>
+              </div>
+            </div>
+
+
+            <div class="col-md-6">
+              <label for="lote">Lote</label>
+              <input name="lote" type="text" formControlName="lote" placeholder="Escribir aqui"
+              id="lote">
+              <div *ngIf="loteFieldInvalid">
+                <mat-error *ngIf="lote?.hasError('required')">
+                  El lote es Obligatorio
+                </mat-error>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+        </form>
       </div>
-
-
-      <div class="form-group">
-        <label>Número de Factura</label>
-        <input type="text" class="form-control" id="numeroFactura" [(ngModel)]="salidaAlimentos.numeroFactura" name="numeroFactura" required>
-      </div>
-
-
-      <div class="form-group">
-        <label>Número de Kilos</label>
-        <input type="text" class="form-control" id="numeroKilos" [(ngModel)]="salidaAlimentos.numeroKilos" name="numeroKilos" required>
-      </div>
-
-      <div class="form-group">
-        <label>Lote</label>
-        <input type="text" class="form-control" id="registroIca" [(ngModel)]="salidaAlimentos.lote" name="registroIca" required>
-      </div>
-
-      
-      <button type="submit" class="btn btn-primary">Guardar</button>
-    </form>
+    </div>
   </div>
