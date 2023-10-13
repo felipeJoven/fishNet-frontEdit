@@ -13,7 +13,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { WelcomeComponent } from './views/welcome/welcome.component';
 import { InventarioAliComponent } from './views/inventario-ali/inventario-ali.component';
 import { SublevelMenuComponent } from './sidenav/sublevel-menu.component';
-import { EspeciesComponent } from './views/especies/especies.component';
+
 // import { ProveedorComponent } from './views/proveedor/proveedor.component';
 // import { LoteComponent } from './views/lote/lote.component';
 
@@ -27,9 +27,7 @@ import { EspeciesComponent } from './views/especies/especies.component';
     WelcomeComponent,
     InventarioAliComponent,
     SublevelMenuComponent,
-    EspeciesComponent,
-    // ProveedorComponent,
-    // LoteComponent,
+
 
   ],
   imports: [

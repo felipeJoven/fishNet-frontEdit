@@ -1,3 +1,20 @@
-<div> 
-	<h1>Hello World</h1>
+<div class="container">
+	<div class="form-group"></div>
+		<table id="dataTable" class="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Especie</th>
+					<th>Fecha de registro</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let item of especies; let i = index" class="especies-item">
+					<th scope="row">{{ i + 1}}</th>
+					<td>{{ item.nombreEspecie }}</td>
+					<td>{{ item.fechaRegistro }}</td>
+				</tr>
+			</tbody>
+		</table>
 </div>

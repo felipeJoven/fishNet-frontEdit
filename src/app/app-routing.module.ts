@@ -7,7 +7,6 @@ import { EditproveedorComponent } from './views/proveedor/editproveedor/editprov
 import { EditEntradaComponent } from './views/inventario-ali/registrar-entrada/editentrada/editentrada.component';
 import { EditSalidaComponent } from './views/inventario-ali/registrar-salida/editsalida/editsalida.component';
 
-
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch:'full'},
   {path: 'home', component: HomeComponent},
@@ -19,7 +18,8 @@ const routes: Routes = [
   {path: 'editar-unidad/:id', component: EditunidadpComponent},
   {path: 'proveedor', loadChildren: () => import('./views/proveedor/proveedor.module').then(m => m.ProveedorModule)},
   {path: 'editar-proveedor/:id', component: EditproveedorComponent},
-  {path: 'lote', loadChildren: () => import('./views/lote/lote.module').then(m => m.LoteModule)}
+  {path: 'lote', loadChildren: () => import('./views/lote/lote.module').then(m => m.LoteModule)},
+  {path: 'especies', loadChildren: () => import ('./views/especies/especies.module').then(m => m.EspeciesModule)},
 ];
 
 @NgModule({

@@ -81,6 +81,20 @@ export const navbarData: INavbarData[] = [
 
     ]
   },
-
+  {
+    routeLink: 'especies',
+    icon: 'fal fa-home',
+    label: 'Especies',
+    items: [
+      {
+        routeLink: 'especies/consultar',
+        label: 'Consultar Especies'
+      },
+      {
+        routeLink: 'especies/registro-especies',
+        label: 'Registrar Especies'
+      },
+    ]
+  },
 
 ];
