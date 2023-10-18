@@ -1,1 +1,45 @@
-<p>registro-especie works!</p>
+<div class="card">
+    <div class="card-h1">Registar Especies</div>
+      <div class="card-body">
+        <div *ngIf="!submitted">
+          <div class="card-form">
+            <form [formGroup]="formulario" (ngSubmit)="submit()">
+              <div class="form-row">
+  
+                <div class="col-md-6">
+                  <label for="nombreEspecie">Nombre Especie</label>
+                  <input name="nombreEspecie" type="text" formControlName="nombreEspecie" placeholder="Escribir aquí"
+                    id="nombreEspecie" />
+                  <div *ngIf="nombreEspecieFieldvalid">
+                    <mat-error *ngIf="nombreEspecie.hasError('required')">
+                      El nombre de especies es Obligatoria
+                    </mat-error>
+                  </div>
+                </div>
+  
+                <div class="col-md-6">
+                  <label for="fechaRegistro">Fecha Registro</label>
+                  <input name="fechaRegistro" type="text" formControlName="fechaRegistro" placeholder="Escribir aquí"
+                    id="fechaRegistro" />
+                  <div *ngIf="fechaRegistro">
+                    <mat-error *ngIf="fechaRegistro.hasError('required')">
+                      La fehca de registro es Obligatoria
+                    </mat-error>
+                  </div>
+                </div>
+
+              </div>
+              <div class="container-btn">
+                <button class="btn btn-new" type="submit" [disabled]="!formulario.valid">Guardar</button>
+              </div>
+            </form>
+          </div>
+  
+        </div>
+        <div *ngIf="submitted">
+          <h3>Registro una Especie</h3>
+          <button class="btn-new" (click)="nuevasEspecies()">Crear Nueva</button>
+          <button routerLink="/unidad/consultar" class="btn-new">Ver Registros</button>
+        </div>
+    </div>
+  </div>

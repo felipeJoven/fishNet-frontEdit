@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { EspeciesRoutingModule } from './especies-routing.module';
 import { RegistroEspecieComponent } from './registro-especie/registro-especie.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @NgModule({
@@ -11,7 +13,10 @@ import { RegistroEspecieComponent } from './registro-especie/registro-especie.co
       ],
   imports: [
     CommonModule,
-    EspeciesRoutingModule
+    EspeciesRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule
   ]
 })
 export class EspeciesModule { }

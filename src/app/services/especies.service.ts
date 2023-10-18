@@ -15,4 +15,21 @@ export class EspeciesService {
   obtenerEspecies(): Observable<Especies[]> {
     return this.http.get<Especies[]>(this.apiUrl);
   }
+
+  obtenerEspeciesPorId(id: number): Observable<Especies> {
+    return this.http.get<Especies>(this.apiUrl + `/${id}`);
+  }
+
+  agregarEspecies(especies:any): Observable<any> {
+    return this.http.post(this.apiUrl,especies);
+  }
+
+  actualizarEspecies(id: number, especies: Especies): Observable<any>{
+    return this.http.put(this.apiUrl + `/${id}`, especies);
+  }
+
+  eliminarEspecies(id: number): Observable<any>{
+    return this.http.delete(`${this.apiUrl}/$id`);
+  }
+
 }

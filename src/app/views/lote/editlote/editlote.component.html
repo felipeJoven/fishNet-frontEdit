@@ -1,0 +1,109 @@
+<div class="card">
+    <div class="card-h1">Crear Lote</div>
+    <div class="card-body">
+      <div *ngIf="!submitted">
+        <div class="card-form">
+          <form [formGroup]="formulario" (ngSubmit)="submit()">
+            <div class="form-row">
+              
+              <div class="col-md-6">
+                <label for="nombreLote">Nombre del Lote</label>
+                <input name="nombreLote" type="text" formControlName="nombreLote" id="nombreLote" />
+                <div *ngIf="nombreLoteFieldInvalid">
+                  <mat-error *ngIf="nombreLote?.hasError('required')">
+                    El Nombre del Lote es Obligatorio
+                  </mat-error>
+                </div>
+              </div>
+              
+              <div class="col-md-6">
+                <label for="fechaSiembra">Fecha de Siembra</label>
+                <input name="fechaSiembra" type="date" formControlName="fechaSiembra" id="fechaSiembra" />
+                <div *ngIf="fechaSiembraFieldInvalid">
+                  <mat-error *ngIf="fechaSiembra?.hasError('required')">
+                    La fecha es Obligatoria
+                  </mat-error>
+                </div>
+              </div>
+  
+              <div class="col-md-6">
+                <label for="diasCultivo">Días de Cultivo</label>
+                <input name="diasCultivo" type="text" formControlName="diasCultivo" id="diasCultivo" />
+                <div *ngIf="diasCultivoFieldInvalid">
+                  <mat-error *ngIf="diasCultivo?.hasError('required')">
+                    Los Dias de Cultivo son Obligatorios
+                  </mat-error>
+                </div>
+              </div>
+  
+              <div class="col-md-6">
+                <label for="numeroAnimales">Número de Animales</label>
+                <input name="numeroAnimales" type="text" formControlName="numeroAnimales" id="numeroAnimales" />
+                <div *ngIf="numeroAnimalesFieldInvalid">
+                  <mat-error *ngIf="numeroAnimales?.hasError('required')">
+                    El Número de Animales es Obligatorio
+                  </mat-error>
+                </div>
+              </div>
+  
+              <div class="col-md-6">
+                <label for="proveedor">Proveedor</label>
+                <select name="proveedor" type="text" formControlName="proveedor" id="proveedor">
+                  <option>Seleccione un Proveedor</option>
+                  <option *ngFor="let item of ProveedorList" value="{{item.id}}">
+                    {{item.nombre}}
+                  </option>
+                </select>
+                  <div *ngIf="proveedorFieldInvalid">
+                    <mat-error *ngIf="proveedor?.hasError('required')">
+                      El Proveedor es Obligatorio
+                    </mat-error>
+                  </div>
+              </div>
+  
+              <div class="col-md-6">
+                <label for="especies">Especie</label>
+                <select name="especies" type="text" formControlName="especies" id="especies">
+                  <option>Seleccione una Especie</option>
+                  <option *ngFor="let item of EspeciesList" value="{{item.id}}">
+                    {{item.nombreEspecie}}
+                  </option>
+                </select>
+                  <div *ngIf="especiesFieldInvalid">
+                    <mat-error *ngIf="especies?.hasError('required')">
+                      La Especie es Obligatoria
+                    </mat-error>
+                  </div>
+              </div>
+  
+              <div class="col-md-6">
+                <label for="unidadP">Unidad Productiva</label>
+                <select name="unidadP" type="text" formControlName="unidadP" id="unidadP">
+                  <option>Seleccione una Especie</option>
+                  <option *ngFor="let item of UnidadPList" value="{{item.id}}">
+                    {{item.nombreUnidadP}}
+                  </option>
+                </select>
+                  <div *ngIf="unidadPFieldInvalid">
+                    <mat-error *ngIf="unidadP?.hasError('required')">
+                      La Unidad Productiva es Obligatoria
+                    </mat-error>
+                  </div>
+              </div>
+  
+            </div>
+            <div class="container-btn">
+              <button class="btn btn-new" type="submit" [disabled]="!formulario.valid">Guardar</button>
+            </div>
+          </form>
+        </div>
+  
+      </div>
+      <div *ngIf="submitted">
+        <h3>Creaste un nuevo Lote!</h3>
+        <button class="btn-new" (click)="nuevoLote()">Crear Nuevo</button>
+        <button routerLink="/lote/consultar-lote" class="btn-new">Ver Registros</button>
+      </div> 
+    </div>
+  </div>
+  

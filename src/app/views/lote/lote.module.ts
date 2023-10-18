@@ -7,13 +7,15 @@ import { ConsultarLoteComponent } from './consultar-lote/consultar-lote.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
+import { EditloteComponent } from './editlote/editlote.component';
 
 
 
 @NgModule({
   declarations: [
     AddLoteComponent,
-    ConsultarLoteComponent
+    ConsultarLoteComponent,
+    EditloteComponent
   ],
   imports: [
     CommonModule,
