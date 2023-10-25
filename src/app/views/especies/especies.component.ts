@@ -12,12 +12,7 @@ export class EspeciesComponent implements OnInit {
 
 
   especies: Especies[] = [];
-  especie: Especies = {
-    id: 0,
-    nombreEspecie: '',
-    fechaRegistro: new Date
 
-  }
 
   constructor(private especiesService: EspeciesService,
     private router: Router){}
@@ -27,9 +22,24 @@ export class EspeciesComponent implements OnInit {
 
   obtenerEspecies(): void {
     this.especiesService.obtenerEspecies().subscribe(especies => {
-      this.especies = this.especies;
+      this.especies = especies;
     });
   }
+
+  editarEspecie(id: number):void{
+    console.log(id);
+
+    this.router.navigate(['editar-especies', id])
+}
+
+eliminarEspecies(id: number) {
+  this.especiesService.eliminarEspecies(id)
+  .subscribe(respuesta => {
+    console.log(respuesta);
+    this.obtenerEspecies();
+  });
+  
+}
 
   
 }

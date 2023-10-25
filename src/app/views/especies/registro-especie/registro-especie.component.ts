@@ -27,8 +27,6 @@ export class RegistroEspecieComponent implements OnInit{
 
 
 
-
-
     submit() {
       if(this.formulario.valid){
         console.log("this.formulario.value = ", this.formulario.value);
@@ -40,8 +38,7 @@ export class RegistroEspecieComponent implements OnInit{
 
     private buildForm() {
       this.formulario = this.fb.group({
-        nombreEspecie: ['', [Validators.required]],
-        fechaRegistro: ['', [Validators.required]]
+        nombreEspecie: ['', [Validators.required]]
       })
     }
 
@@ -50,22 +47,14 @@ export class RegistroEspecieComponent implements OnInit{
     }
 
     get nombreEspecie(){
-      return this.formulario.get('nombreEspecies');
+      return this.formulario.get('nombreEspecie');
     }
 
-
-    get fechaRegistroFieldvalid(){
-      return this.fechaRegistro?.touched && this.fechaRegistro.invalid;
-    }
-
-    get fechaRegistro(){
-      return this.formulario.get('fechaRegistro');
-    }
 
     crearEspecies(): void {
       const especies = {
-        nombreEspecies: this.nombreEspecie?.value,
-        fechaRegistro: this.fechaRegistro?.value
+        nombreEspecie: this.nombreEspecie?.value,
+
       };
 
       console.log("especies =", especies);
@@ -80,7 +69,7 @@ export class RegistroEspecieComponent implements OnInit{
         });
     }
 
-    nuevasEspecies(): void {
+    nuevaEspecie(): void {
       this.submitted = false;
       this.formulario.reset();
     }

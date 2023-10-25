@@ -31,7 +31,6 @@ export class AddunidadpComponent implements OnInit {
              ) { }
 
     
-
     submit() {
       if (this.formulario.valid){
         console.log("this.formulario.value = ", this.formulario.value);
@@ -48,8 +47,7 @@ export class AddunidadpComponent implements OnInit {
         area: ['', [Validators.required]],
         coordenadas: ['', [Validators.required]],
         observacion: ['', [Validators.required]],
-        profundidad: ['', [Validators.required]],
-        fechaRegistro: ['', [Validators.required]]
+        profundidad: ['', [Validators.required]]
       });
     }
 
@@ -93,14 +91,7 @@ export class AddunidadpComponent implements OnInit {
       return this.formulario.get('profundidad');
     }
 
-    get fechaRegistroFieldInvalid(){
-      return this.fechaRegistro?.touched && this.fechaRegistro.invalid;
-    }
-
-    get fechaRegistro() {
-      return this.formulario.get('fechaRegistro');
-    } 
-
+  
 
   crearUnidadP(): void {
     
@@ -109,8 +100,7 @@ export class AddunidadpComponent implements OnInit {
       area: this.area?.value, 
       coordenadas: this.coordenadas?.value,
       observacion: this.observacion?.value,
-      profundidad: this.profundidad?.value,
-      fechaRegistro: this.fechaRegistro?.value
+      profundidad: this.profundidad?.value
     };
 
     console.log("unidadP = ", unidadP);

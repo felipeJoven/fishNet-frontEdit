@@ -14,7 +14,7 @@ export class EditEntradaComponent implements OnInit {
 
   entradaAlimentos: EntradaAlimentos = {
     id: 0,
-    fechaEntrada: new Date ,
+    fechaCreacion: new Date ,
     fechaVencimiento: new Date,
     numeroFactura: 0,
     registroIca: "",

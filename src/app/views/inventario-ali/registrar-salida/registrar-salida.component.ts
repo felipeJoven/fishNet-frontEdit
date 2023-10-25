@@ -38,13 +38,6 @@ export class RegistrarSalidaComponent implements OnInit {
     });
   }
 
-  get fechaSalidaFieldInvalid(){
-    return this.fechaSalida?.touched && this.fechaSalida.invalid;
-  }
-
-  get fechaSalida(){
-    return this.formulario.get('fechaSalida');
-  }
 
   get numeroFacturaFieldInvalid(){
     return this.numeroFactura?.touched && this.numeroFactura.invalid;
@@ -72,11 +65,10 @@ export class RegistrarSalidaComponent implements OnInit {
 
 
   private buildForm() {
-    this.formulario = this.fb.group({
-      fechaSalida: ['',[Validators.required]],
+    this.formulario = this.fb.group({ 
       numeroFactura: ['',[Validators.required]],
       numeroKilos: ['',[Validators.required]],
-      lote: ['',[Validators.required]],
+      lote: [0,[Validators.required]],
     });
   }
 
@@ -95,7 +87,6 @@ export class RegistrarSalidaComponent implements OnInit {
     lote.id = this.lote?.value;
 
     const salida = {
-      fechaSalida: this.fechaSalida?.value,
       numeroFactura: this.numeroFactura?.value,
       numeroKilos: this.numeroKilos?.value,
       lote: lote

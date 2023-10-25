@@ -71,7 +71,7 @@ export const navbarData: INavbarData[] = [
     label: 'Lote  ',
     items: [
       {
-        routeLink: 'lote/consultar-lote',
+        routeLink: 'lote/consultar',
         label: 'Consultar lote'
         },
       {

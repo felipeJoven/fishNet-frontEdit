@@ -65,22 +65,6 @@ export class AddLoteComponent implements OnInit{
     return this.formulario.get('nombreLote');
   }
 
-  get fechaSiembraFieldInvalid(){
-    return this.fechaSiembra?.touched && this.fechaSiembra.invalid;
-  }
-
-  get fechaSiembra(){
-    return this.formulario.get('fechaSiembra');
-  }
-
-  get diasCultivoFieldInvalid(){
-    return this.diasCultivo?.touched && this.diasCultivo.invalid;
-  }
-
-  get diasCultivo(){
-    return this.formulario.get('diasCultivo');
-  }
-
   get numeroAnimalesFieldInvalid(){
     return this.numeroAnimales?.touched && this.numeroAnimales.invalid;
   }
@@ -88,14 +72,14 @@ export class AddLoteComponent implements OnInit{
   get numeroAnimales(){
     return this.formulario.get('numeroAnimales');
   }
+  get proveedor(){
+    return this.formulario.get('proveedor');
+  }
 
   get proveedorFieldInvalid(){
     return this.proveedor?.touched && this.proveedor.invalid;
   }
 
-  get proveedor(){
-    return this.formulario.get('proveedor');
-  }
 
   get especiesFieldInvalid(){
     return this.especies?.touched && this.especies.invalid;
@@ -117,12 +101,10 @@ export class AddLoteComponent implements OnInit{
   private buildForm() {
     this.formulario = this.fb.group({
       nombreLote: ['', [Validators.required]],
-      fechaSiembra: ['', [Validators.required]],
-      diasCultivo: ['', [Validators.required]],
       numeroAnimales: ['', [Validators.required]],
-      proveedor: ['', [Validators.required]],
-      especies: ['', [Validators.required]],
-      unidadP: ['', [Validators.required]]
+      proveedor: [0, [Validators.required]],
+      especies: [0, [Validators.required]],
+      unidadP: [0, [Validators.required]]
     });
   }
 
@@ -148,11 +130,8 @@ export class AddLoteComponent implements OnInit{
     let unidadP: UnidadProductiva = new UnidadProductiva();
     unidadP.id = this.unidadP?.value;
 
-
     const lote = {
       nombreLote: this.nombreLote?.value,
-      fechaSiembra: this.fechaSiembra?.value,
-      diasCultivo: this.diasCultivo?.value,
       numeroAnimales: this.numeroAnimales?.value,
       proveedor: proveedor,
       especies: especies,

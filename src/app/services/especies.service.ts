@@ -29,7 +29,7 @@ export class EspeciesService {
   }
 
   eliminarEspecies(id: number): Observable<any>{
-    return this.http.delete(`${this.apiUrl}/$id`);
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
 }

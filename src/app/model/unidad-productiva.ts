@@ -5,5 +5,5 @@ export class UnidadProductiva {
     coordenadas: number;
     observacion: string;
     profundidad: number;
-    fechaRegistro: Date;
+    fechaCreacion: Date;
     }

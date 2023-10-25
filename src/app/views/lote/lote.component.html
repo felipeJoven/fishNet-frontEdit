@@ -1,28 +1,33 @@
 <div class="container">
-    <div class="form-group"></div>
-    <table id="dataTable" class="table">
-      <thead>
-        <tr>
-          <th>Codigo de lote</th>
-          <th>Número de animales</th>
-          <th>Fecha de siembra</th>
-          <th>Proveedor</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- <tr *ngFor="let item of unidadp; let i = index" class="unidadp-item">
-          <th scope="row">{{ i + 1 }}</th>
-          <td>{{ item.id }}</td>
-          <td>{{ item.area }}</td>
-          <td>{{ item.codigo }}</td>
-          <td>{{ item.coordenadas }}</td>
-          <td>{{ item.observaciones }}</td>
-          <td>{{ item.profundidad }}</td> -->
-          <!-- <td><button class="edit" (click)="editarUnidadp(item.id)">Editar</button></td> -->
-          <!-- <td><button class="delete" (click)="eliminarUnidadProductiva(item.id)">Eliminar</button></td> -->
-        <!-- </tr> -->
-      </tbody>
-    </table>  
-  </div>
-  
+  <div class="form-group"></div>
+  <h2>consultar Lote</h2>
+  <table id="dataTable" class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nombre Lote</th>
+        <th>Fecha de Siembra</th>
+        <th>Número Animales</th>
+        <th>Proveedor</th>
+        <th>Especie</th>
+        <th>Unidad Productiva</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of lote; let i = index" class="lote-item">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ item.nombreLote }}</td>
+        <td>{{ item.fechaCreacion }}</td>
+        <td>{{ item.numeroAnimales }}</td>
+        <td>{{ item.proveedor.nombre }}</td>
+        <td>{{ item.especies.nombreEspecie }}</td>
+        <td>{{ item.unidadP.nombreUnidadP }}</td>
+        
+        <td><button class="edit" (click)="editarLote(item.id)">Editar</button></td>
+        <td><button class="delete" (click)="eliminarLote(item.id)">Eliminar</button></td>
+      </tr>
+    </tbody>
+  </table>  
+  <button routerLink="/lote/registrar-lote" class="btn-new">Registrar Entrada</button>
+</div>
+

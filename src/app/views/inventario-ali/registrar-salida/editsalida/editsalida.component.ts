@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SalidaAlimentos } from 'src/app/model/inv-salida-alimento';
 import { Lote } from 'src/app/model/lote';
 import { InvSalidaAlimentosService } from 'src/app/services/inv-salida-alimento.service';
+import { LoteService } from 'src/app/services/lote.service';
 @Component({
   selector: 'app-editsalida',
   templateUrl: './editsalida.component.html',
@@ -15,8 +16,11 @@ export class EditSalidaComponent implements OnInit{
   submitted = false;
   formulario!: FormGroup;
 
+  LoteList: any;
+
   constructor(
     private invSalidaAlimentosService : InvSalidaAlimentosService,
+    private loteService : LoteService,
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder
@@ -26,14 +30,18 @@ export class EditSalidaComponent implements OnInit{
     this.idSalidaAli = Number(this.route.snapshot.paramMap.get('id'));
     this.buildForm();
 
+    this.loteService.obtenerLote().subscribe((lote: Lote[]) => {
+      this.LoteList = lote;
+    });
+
     if (this.idSalidaAli !== null){
       const id = +this.idSalidaAli;
 
       this.invSalidaAlimentosService.obtenerSalidaAlimentosPorId(id).subscribe(salidaAli => {
         this.formulario.get('numeroFactura').setValue(salidaAli.numeroFactura);
         this.formulario.get('numeroKilos').setValue(salidaAli.numeroKilos);
-        this.formulario.get('fechaSalida').setValue(salidaAli.fechaSalida);
-        this.formulario.get('lote').setValue(salidaAli.lote);
+        this.formulario.get('fechaSalida').setValue(salidaAli.fechaCreacion);
+        this.formulario.get('lote').setValue(salidaAli.lote.id);
 
       });
     }
@@ -64,10 +72,10 @@ export class EditSalidaComponent implements OnInit{
     return this.formulario.get('numeroKilos')
   }
   get fechaSalidaFieldInvalid() {
-    return this.fechaSalida?.touched && this.fechaSalida.invalid;
+    return this.fechaCreacion?.touched && this.fechaCreacion.invalid;
   }
 
-  get fechaSalida(){
+  get fechaCreacion(){
     this.formulario.get('fechaSalida')
     return this.formulario.get('fechaSalida')
   }
@@ -84,11 +92,13 @@ export class EditSalidaComponent implements OnInit{
     
     let salidaAliEnviar: SalidaAlimentos = new SalidaAlimentos();
     
+    let lote: Lote = new Lote();
+    lote.id = this.lote?.value;
 
     salidaAliEnviar.numeroFactura = this.formulario.get('numeroFactura').value;
     salidaAliEnviar.numeroKilos = this.formulario.get('numeroKilos').value;
-    salidaAliEnviar.fechaSalida = this.formulario.get('fechaSalida').value;
-    salidaAliEnviar.lote = this.formulario.get('lote').value;
+    salidaAliEnviar.fechaCreacion = this.formulario.get('fechaSalida').value;
+    salidaAliEnviar.lote = lote;
 
     this.invSalidaAlimentosService.actualizarSalidaAlimentos(this.idSalidaAli, salidaAliEnviar).subscribe(
       response => {

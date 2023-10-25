@@ -28,11 +28,11 @@
             </div>
 
             <div class="col-md-6">
-              <label for="fechaSalida">Fecha de Salida</label>
-              <input name="fechaSalida" type="date" formControlName="fechaSalida" placeholder="Escribir aqui"
-              id="numeroFactura">
+              <label for="fechaCreacion">Fecha de Salida</label>
+              <input name="fechaCreacion" type="date" formControlName="fechaCreacion" placeholder="Escribir aqui"
+              id="fechaCreacion">
               <div *ngIf="fechaSalidaFieldInvalid">
-                <mat-error *ngIf="fechaSalida?.hasError('required')">
+                <mat-error *ngIf="fechaCreacion?.hasError('required')">
                   La fecha es Obligatoria
                 </mat-error>
               </div>
@@ -40,15 +40,20 @@
 
 
             <div class="col-md-6">
-              <label for="lote">Lote</label>
-              <input name="lote" type="text" formControlName="lote" placeholder="Escribir aqui"
-              id="lote">
+            <label for="lote">Lote</label>
+            <select name="lote" type="text" formControlName="lote" id="lote">
+              <!-- <option>Seleccione un Proveedor</option> -->
+              <option *ngFor="let item of LoteList" value="{{item.id}}">
+                {{item.nombreLote}}
+              </option>
+            </select>
               <div *ngIf="loteFieldInvalid">
                 <mat-error *ngIf="lote?.hasError('required')">
-                  El lote es Obligatorio
+                  El Lote es Obligatorio
                 </mat-error>
               </div>
-            </div>
+          </div>
+          
 
             <button type="submit" class="btn btn-primary">Guardar</button>
           </div>

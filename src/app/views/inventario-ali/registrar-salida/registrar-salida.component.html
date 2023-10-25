@@ -7,15 +7,6 @@
         <h3>Registrar salida de alimento</h3>
         <div class="form-row">
 
-          <div class="col-md-6">
-            <label for="fechaSalida">Fecha de Salida</label>
-            <input name="fechaSalida" type="date" formControlName="fechaSalida" id="fechaSalida">
-            <div *ngIf="fechaSalidaFieldInvalid">
-              <mat-error *ngIf="fechaSalida?.hasError('required')">
-                La Fecha es Obligatoria
-              </mat-error>
-            </div>
-          </div>
 
           <div class="col-md-6">
             <label for="numeroFactura">Numero de factura</label>
@@ -41,7 +32,7 @@
           <div class="col-md-6">
             <label for="lote">Lote</label>
             <select name="lote" type="text" formControlName="lote" id="lote">
-              <option>Selecionar Lote</option>
+              <option value="0">Selecionar Lote</option>
               <option *ngFor="let item of LoteList" value="{{item.id}}">
                 {{item.nombreLote}}
               </option>
@@ -59,6 +50,11 @@
         </div>
       </form>
       </div>
+    </div>
+    <div *ngIf="submitted">
+      <h3>Creaste un nuevo Registro de salida de Alimento!</h3>
+      <button class="btn-new" (click)="nuevaSalida()">Crear Nueva</button>
+      <button routerLink="/inventario/consultar-salida" class="btn-new">Ver Registros</button>
     </div>
   </div>
 </div>

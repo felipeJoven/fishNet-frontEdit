@@ -1,6 +1,6 @@
 export class TipoAlimento {
     id: number;
     tipoAlimento: string;
-    fechaRegistro: Date;
+    fechaCreacion: Date;
     }
     

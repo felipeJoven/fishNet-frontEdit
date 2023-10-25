@@ -12,11 +12,6 @@ import { TipoAlimentoService } from 'src/app/services/tipo-alimento.service';
 export class AddalimentoComponent implements OnInit {
 
   tipoAlimento: TipoAlimento[] = [];
- /*  tipoAlidpr: TipoAli = {
-    id: 0,
-    tipoAlimento:'',
-    fechaRegistro: 0
-  } */
 
   constructor(private tipoAlimentoService: TipoAlimentoService, 
               private dialog: MatDialog, 

@@ -12,6 +12,7 @@
           <th>Razón Social</th>
           <th>Tipo de Proveedor</th>
           <th>Tipo de Identificación</th>
+          <th>Número de Identificación</th>
           <th>Fecha de Registro</th>
         </tr>
       </thead>
@@ -26,7 +27,9 @@
           <td>{{ item.razonSocial }}</td>
           <td>{{ item.tipoProveedor.tipoProveedor }}</td>
           <td>{{ item.tipoIdentificacion.tipoIdentificacion }}</td>
-          <td>{{ item.fechaRegistro }}</td>
+          <td>{{ item.numeroIdentificacion }}</td>
+          <td>{{ item.fechaCreacion }}</td>
+
           <td><button class="edit" (click)="editarProveedor(item.id)">Editar</button></td>
           <td><button class="delete" (click)="eliminarProveedor(item.id)">Eliminar</button></td>
         </tr>

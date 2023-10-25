@@ -13,7 +13,6 @@ import { UnidadProductivaService } from 'src/app/services/unidad-productiva.serv
 export class EditunidadpComponent implements OnInit {
 
   idUnidad: number;
-
   submitted = false;
   formulario!: FormGroup;
 
@@ -37,7 +36,6 @@ export class EditunidadpComponent implements OnInit {
         this.formulario.get('area').setValue(unidadp.area);
         this.formulario.get('coordenadas').setValue(unidadp.coordenadas);
         this.formulario.get('profundidad').setValue(unidadp.profundidad);
-        this.formulario.get('fechaRegistro').setValue(unidadp.fechaRegistro);
         this.formulario.get('observacion').setValue(unidadp.observacion);
       });
 
@@ -52,9 +50,7 @@ export class EditunidadpComponent implements OnInit {
       area: new FormControl('', Validators.required),
       coordenadas: new FormControl('', Validators.required),
       profundidad: new FormControl('', Validators.required),
-      fechaRegistro: new FormControl('', Validators.required),
       observacion: new FormControl('', Validators.required)
-
     });
   }
 
@@ -95,15 +91,6 @@ export class EditunidadpComponent implements OnInit {
     return this.formulario.get('profundidad')
   }
 
-  get fechaRegistroFieldInvalid() {
-    return this.fechaRegistro?.touched && this.fechaRegistro.invalid;
-  }
-
-  get fechaRegistro() {
-    this.formulario.get('fechaRegistro')
-    return this.formulario.get('fechaRegistro')
-  }
-
   get observacionFieldInvalid() {
     return this.observacion?.touched && this.observacion.invalid;
   }
@@ -123,7 +110,6 @@ export class EditunidadpComponent implements OnInit {
     unidadEnviar.area = this.formulario.get('area').value;
     unidadEnviar.coordenadas = this.formulario.get('coordenadas').value;
     unidadEnviar.profundidad = this.formulario.get('profundidad').value;
-    unidadEnviar.fechaRegistro = this.formulario.get('fechaRegistro').value;
     unidadEnviar.observacion = this.formulario.get('observacion').value;
 
 

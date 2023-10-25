@@ -71,7 +71,7 @@
             <div class="col-md-6">
               <label for="tipoProveedor">Tipo de Proveedor</label>
               <select name="tipoProveedor" type="text" formControlName="tipoProveedor" id="tipoProveedor">
-                <option>Seleccione un Tipo de Proveedor</option>
+                <option value="0">Seleccione un Tipo de Proveedor</option>
                 <option *ngFor="let item of tipoProveedorList" value="{{item.id}}">
                   {{item.tipoProveedor}}
                 </option>
@@ -86,7 +86,7 @@
             <div class="col-md-6">
               <label for="tipoIdentificacion">Tipo de Identificación</label>
               <select name="tipoIdentificacion" type="text" formControlName="tipoIdentificacion" id="tipoIdentificacion">
-                <option>Seleccione un Tipo de Identificación</option>
+                <option value="0">Seleccione un Tipo de Identificación</option>
                 <option *ngFor="let item of tipoIdentificacionList" value="{{item.id}}">
                   {{item.tipoIdentificacion}}
                 </option>
@@ -99,18 +99,19 @@
             </div>
 
             <div class="col-md-6">
-              <label for="fechaRegistro">Fecha de Registro</label>
-              <input name="fechaRegistro" type="date" formControlName="fechaRegistro" id="fechaRegistro" />
-              <div *ngIf="fechaRegistroFieldInvalid">
-                <mat-error *ngIf="fechaRegistro?.hasError('required')">
-                  La Fecha de Registro es Obligatoria
+              <label for="numeroIdentificacion">Número de Identificación</label>
+              <input name="numeroIdentificacion" type="text" formControlName="numeroIdentificacion" placeholder="Escribir aquí"
+                id="numeroIdentificacion" />
+              <div *ngIf="numeroIdentificacionFieldInvalid">
+                <mat-error *ngIf="numeroIdentificacion?.hasError('required')">
+                  El número de Identificación es Obligatoria
                 </mat-error>
               </div>
             </div>
 
           </div>
           <div class="container-btn">
-            <button class="btn-new" type="submit">Guardar</button>
+            <button class="btn btn-new" type="submit" [disabled]="!formulario.valid">Guardar</button>
           </div>
         </form>
       </div>
@@ -118,7 +119,7 @@
     </div>
     <div *ngIf="submitted">
       <h3>Creaste un nuevo Proveedor!</h3>
-      <button class="btn-new" (click)="nuevoProveedor()">Crear Nueva</button>
+      <button class="btn-new" (click)="nuevoProveedor()">Crear Nuevo</button>
       <button routerLink="/proveedor/consultar" class="btn-new">Ver Registros</button>
     </div>
   </div>

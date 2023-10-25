@@ -6,14 +6,15 @@
         <tr>
           <th>#</th>
           <th>Tipo de Alimento</th>
-          <th>Fecha de Registro</th>       
+          <th>Fecha de Registro</th> 
+          <th>Acciones</th>      
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of tipoAlimento; let i = index" class="tipo-alimento-item">
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ item.tipoAlimento }}</td>
-          <td>{{ item.fechaRegistro }}</td>         
+          <td>{{ item.fechaCreacion }}</td>         
           <td><button class="delete" (click)="eliminarTipoAlimento(item.id)">Eliminar</button></td>
         </tr>
       </tbody>

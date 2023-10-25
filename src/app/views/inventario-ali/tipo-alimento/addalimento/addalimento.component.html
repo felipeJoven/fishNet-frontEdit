@@ -3,12 +3,12 @@
     <div class="card-body">
       <div *ngIf="!submitted">
         <div class="card-form">
-          <form [formGroup]="formularioTipo" (ngSubmit)="submit()">
+          <form [formGroup]="formulario" (ngSubmit)="submit()">
             <h3>Registrar Entrada de Alimento</h3>
             <div class="form-row">
               
               <div class="col-md-6">
-                <label for="fecha">Tipo de Alimento</label>
+                <label for="tipoAlimento">Tipo de Alimento</label>
                 <input
                   name="tipoAlimento" 
                   type="text" 
@@ -17,31 +17,16 @@
                   id="tipoAlimento" 
                    />
                    <div *ngIf="tipoAlimentoFieldInvalid">
-                    <mat-error *ngIf="tipoAlimentoTipo?.hasError('required')">
+                    <mat-error *ngIf="tipoAlimento?.hasError('required')">
                       El Tipo de Alimento es Obligatorio
                     </mat-error>
                   </div>
               </div>
-              
-              <div class="col-md-6">
-                <label for="fechaRegistro">Fecha de Vencimiento</label>
-                <input
-                  name="fechaRegistro" 
-                  type="date" 
-                  formControlName="fechaRegistro"                 
-                  id="fechaRegistro" 
-                   />
-                   <div *ngIf="fechaRegistroFieldInvalid">
-                    <mat-error *ngIf="fechaRegistroTipo?.hasError('required')">
-                      La Fecha de Registro es Obligatoria
-                    </mat-error>
-                  </div>
-              </div>              
-    
+                  
   
             </div>
             <div class="container-btn">
-              <button class="btn-new" type="submit">Guardar</button>
+              <button class="btn btn-new" type="submit" [disabled]="!formulario.valid">Guardar</button>
             </div>
           </form>
         </div>

@@ -1,20 +1,22 @@
 <div class="container">
 	<div class="form-group"></div>
-		<table id="dataTable" class="table">
-			<thead>
-				<tr>
-					<th>#</th>
-					<th>Especie</th>
-					<th>Fecha de registro</th>
-					<th>Acciones</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr *ngFor="let item of especies; let i = index" class="especies-item">
-					<th scope="row">{{ i + 1}}</th>
-					<td>{{ item.nombreEspecie }}</td>
-					<td>{{ item.fechaRegistro }}</td>
-				</tr>
-			</tbody>
-		</table>
+	<table id="dataTable" class="table">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Especie</th>
+				<th>Fecha de registro</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let item of especies; let i = index" class="especies-item">
+				<th scope="row">{{ i + 1}}</th>
+				<td>{{ item.nombreEspecie }}</td>
+				<td>{{ item.fechaCreacion }}</td>
+				<td><a class="edit" (click)="editarEspecie(item.id)"><i class="fa-solid fa-pen-to-square"></i></a></td>
+				<td><a class="delete" (click)="eliminarEspecies(item.id)"><i class="fa-solid fa-circle-xmark"></i></a></td>
+			</tr>
+		</tbody>
+	</table>
 </div>

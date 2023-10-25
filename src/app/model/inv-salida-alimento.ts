@@ -1,7 +1,7 @@
 import { Lote } from "./lote";
 export class SalidaAlimentos {
     id: number;
-    fechaSalida: Date;
+    fechaCreacion: Date;
     numeroFactura: number;
     numeroKilos: number;
     lote: Lote;

@@ -8,16 +8,6 @@
           <div class="form-row">
 
             <div class="col-md-6">
-              <label for="fechaEntrada">Fecha de Entrada</label>
-              <input name="fechaEntrada" type="date" formControlName="fechaEntrada" id="fechaEntrada" />
-              <div *ngIf="fechaEntradaFieldInvalid">
-                <mat-error *ngIf="fechaEntrada?.hasError('required')">
-                  La Fecha es Obligatoria
-                </mat-error>
-              </div>
-            </div>
-
-            <div class="col-md-6">
               <label for="fechaVencimiento">Fecha de Vencimiento</label>
               <input name="fechaVencimiento" type="date" formControlName="fechaVencimiento" id="fechaVencimiento" />
               <div *ngIf="fechaVencimientoFieldInvalid">
@@ -30,9 +20,9 @@
             <div class="col-md-6">
               <label for="proveedor">Proveedor</label>
               <select name="proveedor" type="text" formControlName="proveedor" id="proveedor">
-                <option>Seleccione un Proveedor</option>
+                <option value="0">Seleccione un Proveedor</option>
                 <option *ngFor="let item of ProveedorList" value="{{item.id}}">
-                  {{item.nombre}}
+                  {{item.razonSocial}}
                 </option>
               </select>
                 <div *ngIf="proveedorFieldInvalid">
@@ -56,7 +46,7 @@
             <div class="col-md-6">
               <label for="tipoAlimento">Tipo de Alimento</label>
               <select name="tipoAlimento" type="text" formControlName="tipoAlimento" id="tipoAlimento">
-                <option>Seleccione un Tipo de Alimento</option>
+                <option value="0">Seleccione un Tipo de Alimento</option>
                 <option *ngFor="let item of TipoAlimentoList" value="{{item.id}}">
                   {{item.tipoAlimento}}
                 </option>

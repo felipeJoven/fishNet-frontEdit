@@ -10,18 +10,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './unidadp.component.html',
   styleUrls: ['./unidadp.component.scss']
 })
-export class UnidadpComponent implements OnInit{
+export class UnidadpComponent implements OnInit {
   
   unidadp: UnidadProductiva[] = [];
-  unidadpr: UnidadProductiva = {
-    id: 0,
-    nombreUnidadP:'',
-    area: 0,
-    coordenadas: 0,
-    observacion: '',
-    profundidad: 0,
-    fechaRegistro: new Date
-    }
+
 
   constructor(private unidadPService: UnidadProductivaService, 
               private dialog: MatDialog, 
@@ -41,6 +33,7 @@ export class UnidadpComponent implements OnInit{
       this.unidadp = unidadp;
     });
   }
+
 
   editarUnidadp(id: number):void{
     console.log(id);

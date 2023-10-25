@@ -1,9 +1,8 @@
 <div class="card">
-    <div class="card-h1">Crear Lote</div>
+    <div class="card-h1">Editar Lote</div>
     <div class="card-body">
-      <div *ngIf="!submitted">
         <div class="card-form">
-          <form [formGroup]="formulario" (ngSubmit)="submit()">
+          <form (ngSubmit)="guardarCambiosLote()" #editarForm="ngForm" [formGroup]="formulario">
             <div class="form-row">
               
               <div class="col-md-6">
@@ -15,27 +14,7 @@
                   </mat-error>
                 </div>
               </div>
-              
-              <div class="col-md-6">
-                <label for="fechaSiembra">Fecha de Siembra</label>
-                <input name="fechaSiembra" type="date" formControlName="fechaSiembra" id="fechaSiembra" />
-                <div *ngIf="fechaSiembraFieldInvalid">
-                  <mat-error *ngIf="fechaSiembra?.hasError('required')">
-                    La fecha es Obligatoria
-                  </mat-error>
-                </div>
-              </div>
-  
-              <div class="col-md-6">
-                <label for="diasCultivo">Días de Cultivo</label>
-                <input name="diasCultivo" type="text" formControlName="diasCultivo" id="diasCultivo" />
-                <div *ngIf="diasCultivoFieldInvalid">
-                  <mat-error *ngIf="diasCultivo?.hasError('required')">
-                    Los Dias de Cultivo son Obligatorios
-                  </mat-error>
-                </div>
-              </div>
-  
+
               <div class="col-md-6">
                 <label for="numeroAnimales">Número de Animales</label>
                 <input name="numeroAnimales" type="text" formControlName="numeroAnimales" id="numeroAnimales" />
@@ -45,11 +24,11 @@
                   </mat-error>
                 </div>
               </div>
-  
+
               <div class="col-md-6">
                 <label for="proveedor">Proveedor</label>
                 <select name="proveedor" type="text" formControlName="proveedor" id="proveedor">
-                  <option>Seleccione un Proveedor</option>
+                  <option value="0">Seleccione un Proveedor</option>
                   <option *ngFor="let item of ProveedorList" value="{{item.id}}">
                     {{item.nombre}}
                   </option>
@@ -60,11 +39,11 @@
                     </mat-error>
                   </div>
               </div>
-  
+
               <div class="col-md-6">
                 <label for="especies">Especie</label>
                 <select name="especies" type="text" formControlName="especies" id="especies">
-                  <option>Seleccione una Especie</option>
+                  <option value="0">Seleccione una Especie</option>
                   <option *ngFor="let item of EspeciesList" value="{{item.id}}">
                     {{item.nombreEspecie}}
                   </option>
@@ -75,11 +54,11 @@
                     </mat-error>
                   </div>
               </div>
-  
+
               <div class="col-md-6">
                 <label for="unidadP">Unidad Productiva</label>
                 <select name="unidadP" type="text" formControlName="unidadP" id="unidadP">
-                  <option>Seleccione una Especie</option>
+                  <option value="0">Seleccione una Especie</option>
                   <option *ngFor="let item of UnidadPList" value="{{item.id}}">
                     {{item.nombreUnidadP}}
                   </option>
@@ -90,20 +69,13 @@
                     </mat-error>
                   </div>
               </div>
-  
+
             </div>
             <div class="container-btn">
-              <button class="btn btn-new" type="submit" [disabled]="!formulario.valid">Guardar</button>
+              <button type="submit" class="btn btn-new" [disabled]="!formulario.valid">Guardar</button>
             </div>
           </form>
         </div>
-  
       </div>
-      <div *ngIf="submitted">
-        <h3>Creaste un nuevo Lote!</h3>
-        <button class="btn-new" (click)="nuevoLote()">Crear Nuevo</button>
-        <button routerLink="/lote/consultar-lote" class="btn-new">Ver Registros</button>
-      </div> 
-    </div>
   </div>
   

@@ -1,0 +1,12 @@
+<div class="container">
+    <h2>Editar Entrada de Alimentos</h2>
+    <form (ngSubmit)="guardarCambiosEspecies()" #editarForm="ngForm">
+
+      <div class="form-group">
+        <label>Fecha</label>
+        <input type="text" class="form-control" id="fecha" [(ngModel)]="especies.nombreEspecie" name="codigo" required>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+  </div>

@@ -9,7 +9,8 @@ export class Proveedor {
     correo : string;
     direccion : string;
     razonSocial : number;
-    fechaRegistro : Date;
+    fechaCreacion : Date;
     tipoProveedor: TipoProveedor;
     tipoIdentificacion: TipoIdentificacion;
+    numeroIdentificacion: number;
     }

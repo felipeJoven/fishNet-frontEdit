@@ -9,15 +9,18 @@ import { TipoAlimentoService } from 'src/app/services/tipo-alimento.service';
   styleUrls: ['./addalimento.component.scss']
 })
 export class TipoAlimentoComponent implements OnInit {
+ 
+  // Propiedades relacionadas al formulario
+  formulario!: FormGroup;
 
-  formularioTipo!: FormGroup;
-
-  alimento = {
-    tipoAlimento: '',
-    fechaRegistro: '',
-    available: false
-  };
+ // Listas de opciones
   submitted = false; 
+  resultado = "";
+
+  ngOnInit(): void {
+    this.buildForm();
+  }
+
 
   constructor(
     private tipoAlimentoService: TipoAlimentoService, 
@@ -26,51 +29,36 @@ export class TipoAlimentoComponent implements OnInit {
     ) { 
     }
 
-    resultado = "";
+      
+  submit() {
+    if (this.formulario.valid){
+      console.log("this.formulario.value = ", this.formulario.value);
+      this.crearTipoAlimento();
+    }else{
+      this.resultado = "Hay datos inválidos en el formulario";
+    }
+  }
 
     private buildForm() {
-      this.formularioTipo = this.fb.group({
-        tipoAlimento: ['', [Validators.required]],
-        fechaRegistro: ['', [Validators.required]]
+      this.formulario = this.fb.group({
+        tipoAlimento: ['', [Validators.required]]
       });
     }
 
     get tipoAlimentoFieldInvalid(){
-      return this.tipoAlimentoTipo?.touched && this.tipoAlimentoTipo.invalid;
+      return this.tipoAlimento?.touched && this.tipoAlimento.invalid;
     }
 
-    get tipoAlimentoTipo() {
-      return this.formularioTipo.get('tipoAlimento');
-    }
-
-    get fechaRegistroFieldInvalid(){
-      return this.fechaRegistroTipo?.touched && this.fechaRegistroTipo.invalid;
-    }
-
-    get fechaRegistroTipo() {
-      return this.formularioTipo.get('fechaRegistro');
-    }
-
-
-    submit() {
-      if (this.formularioTipo.valid){
-        console.log("this.formularioTipo.value = ", this.formularioTipo.value);
-        this.crearTipoAlimento();
-      }else{
-        this.resultado = "Hay datos inválidos en el formulario";
-      }
-    }
-
-
-    ngOnInit(): void {
-      this.buildForm();
+    get tipoAlimento() {
+      return this.formulario.get('tipoAlimento');
     }
     
-    
+
+
     crearTipoAlimento():void {
       const comida = {
-      tipoAlimento: this.tipoAlimentoTipo?.value,
-      fechaRegistro: this.fechaRegistroTipo?.value         
+      tipoAlimento: this.tipoAlimento?.value,
+    
   
     };
 
@@ -89,11 +77,7 @@ export class TipoAlimentoComponent implements OnInit {
 
     nuevoTipoAlimento(): void {
       this.submitted = false;
-      this.alimento = {
-        tipoAlimento: '',
-        fechaRegistro: '',    
-        available: false,
-    };
+      this.formulario.reset();
     }
 
 }

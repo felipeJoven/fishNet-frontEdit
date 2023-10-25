@@ -112,12 +112,12 @@ export class AddproveedorComponent implements OnInit {
     return this.formulario.get('tipoIdentificacion');
   }
 
-  get fechaRegistroFieldInvalid() {
-    return this.fechaRegistro?.touched && this.fechaRegistro.invalid;
+  get numeroIdentificacionFieldInvalid() {
+    return this.numeroIdentificacion?.touched && this.numeroIdentificacion.invalid;
   }
 
-  get fechaRegistro() {
-    return this.formulario.get('fechaRegistro');
+  get numeroIdentificacion() {
+    return this.formulario.get('numeroIdentificacion');
   }
   
 
@@ -129,9 +129,9 @@ export class AddproveedorComponent implements OnInit {
       correo: ['', [Validators.required]],
       direccion: ['', [Validators.required]],
       razonSocial: ['', [Validators.required]],
-      tipoProveedor: ['', [Validators.required]],
-      tipoIdentificacion: ['', [Validators.required]],
-      fechaRegistro: ['', [Validators.required]],
+      tipoProveedor: [0, [Validators.required]],
+      tipoIdentificacion: [0, [Validators.required]],
+      numeroIdentificacion: ['', [Validators.required]]
     });
   }
 
@@ -162,9 +162,9 @@ export class AddproveedorComponent implements OnInit {
       correo: this.correo?.value,
       direccion: this.direccion?.value,
       razonSocial: this.razonSocial?.value,
-      fechaRegistro: this.fechaRegistro?.value,
       tipoProveedor: tipoProveedor,
-      tipoIdentificacion: tipoIdentificacion
+      tipoIdentificacion: tipoIdentificacion,
+      numeroIdentificacion: this.numeroIdentificacion?.value
     };
 
     console.log("proveedor = ", proveedor);

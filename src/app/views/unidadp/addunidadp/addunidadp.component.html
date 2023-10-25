@@ -29,7 +29,7 @@
               </div>
 
               <div class="col-md-6">
-                <label for="observacion">Observación</label>
+                <label for="observacion">Observaciones</label>
                 <input name="observacion" type="text" formControlName="observacion" placeholder="Escribir aquí"
                   id="observacion" />
                 <div *ngIf="observacionFieldInvalid">
@@ -58,17 +58,7 @@
                     La profundidad es Obligatoria
                   </mat-error>
                 </div>
-              </div>
-
-              <div class="col-md-6">
-                <label for="fechaRegistro">Registro de Unidad Productiva</label>
-                <input name="fechaRegistro" type="date" formControlName="fechaRegistro" id="fechaRegistro" />
-                <div *ngIf="fechaRegistroFieldInvalid">
-                  <mat-error *ngIf="fechaRegistro?.hasError('required')">
-                    La fecha es Obligatoria
-                  </mat-error>
-                </div>
-              </div>
+              </div>            
 
             </div>
             <div class="container-btn">

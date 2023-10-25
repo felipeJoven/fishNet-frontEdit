@@ -22,22 +22,12 @@ export class RegistrarEntradaComponent implements OnInit {
   // Propiedades relacionadas al formulario
   formulario!: FormGroup;
 
+  // Listas de opciones
   submitted = false;
   resultado = "";
 
-  // Listas de opciones
   ProveedorList: any;
   TipoAlimentoList: any;
-
-
-  constructor(
-    private invEntradaAlimentoService: InvEntradaAlimentoService,
-    private proveedorService: ProveedorService,
-    private tipoAlimentoService: TipoAlimentoService,
-    private router: Router,
-    private fb: FormBuilder
-  ) { }
-
 
   ngOnInit(): void {
     this.buildForm();
@@ -51,13 +41,38 @@ export class RegistrarEntradaComponent implements OnInit {
   }
 
 
-  get fechaEntradaFieldInvalid() {
-    return this.fechaEntrada?.touched && this.fechaEntrada.invalid;
+  constructor(
+    private invEntradaAlimentoService: InvEntradaAlimentoService,
+    private proveedorService: ProveedorService,
+    private tipoAlimentoService: TipoAlimentoService,
+    private router: Router,
+    private fb: FormBuilder
+  ) { }
+
+
+  submit() {
+    if (this.formulario.valid) {
+      console.log("this.formulario.value = ", this.formulario.value);
+      this.crearEntradaAlimento();
+    } else {
+      this.resultado = "Hay datos inválidos en el formulario";
+    }
   }
 
-  get fechaEntrada() {
-    return this.formulario.get('fechaEntrada');
+
+  private buildForm() {
+    this.formulario = this.fb.group({
+      fechaVencimiento: ['', [Validators.required]],
+      numeroFactura: ['', [Validators.required]],
+      registroIca: ['', [Validators.required]],
+      numeroKilos: ['', [Validators.required]],
+      proveedor: [0, [Validators.required]],
+      tipoAlimento: [0, [Validators.required]]
+
+    });
   }
+
+
 
   get fechaVencimientoFieldInvalid() {
     return this.fechaVencimiento?.touched && this.fechaVencimiento.invalid;
@@ -108,30 +123,7 @@ export class RegistrarEntradaComponent implements OnInit {
   }
 
 
-  private buildForm() {
-    this.formulario = this.fb.group({
-      fechaEntrada: ['', [Validators.required]],
-      fechaVencimiento: ['', [Validators.required]],
-      numeroFactura: ['', [Validators.required]],
-      registroIca: ['', [Validators.required]],
-      numeroKilos: ['', [Validators.required]],
-      proveedor: ['', [Validators.required]],
-      tipoAlimento: ['', [Validators.required]]
-
-    });
-  }
-
-
-  submit() {
-    if (this.formulario.valid) {
-      console.log("this.formulario.value = ", this.formulario.value);
-      this.crearEntradaAlimento();
-    } else {
-      this.resultado = "Hay datos inválidos en el formulario";
-    }
-  }
-
-
+  
   crearEntradaAlimento(): void {
 
     let proveedor: Proveedor = new Proveedor();
@@ -142,7 +134,7 @@ export class RegistrarEntradaComponent implements OnInit {
 
 
     const entrada = {
-      fechaEntrada: this.fechaEntrada?.value,
+
       fechaVencimiento: this.fechaVencimiento?.value,
       numeroFactura: this.numeroFactura?.value,
       registroIca: this.registroIca?.value,

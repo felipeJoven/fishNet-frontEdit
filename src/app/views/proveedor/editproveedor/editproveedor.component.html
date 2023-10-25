@@ -1,56 +1,3 @@
-<!-- <div class="container">
-        <h2>Editar Proveedor</h2>
-        <form (ngSubmit)="guardarCambiosProveedor()" #editarForm="ngForm">
-
-          <div class="form-group">
-            <label>Nombre</label>
-            <input type="text" class="form-control" id="nombre" [(ngModel)]="proveedor.nombre" name="nombre" required>
-          </div>
-
-          <div class="form-group">
-            <label>Apellido</label>
-            <input type="text" class="form-control" id="apellido" [(ngModel)]="proveedor.apellido" name="apellido" required>
-          </div>
-
-          <div class="form-group">
-            <label>Teléfono</label>
-            <input type="text" class="form-control" id="telefono" [(ngModel)]="proveedor.telefono" name="telefono" required>
-          </div>
-
-          <div class="form-group">
-            <label>correo</label>
-            <input type="text" class="form-control" id="correo" [(ngModel)]="proveedor.correo" name="correo" required>
-          </div>
-
-          <div class="form-group">
-            <label>direccion</label>
-            <input type="text" class="form-control" id="direccion" [(ngModel)]="proveedor.direccion" name="direccion" required>
-          </div>
-
-          <div class="form-group">
-            <label>razonSocial</label>
-            <input type="text" class="form-control" id="razonSocial" [(ngModel)]="proveedor.razonSocial" name="razonSocial" required>
-          </div>
-
-          <div class="form-group">
-            <label>tipoProveedor</label>
-            <input type="text" class="form-control" id="tipoProveedor" [(ngModel)]="proveedor.tipoProveedor" name="tipoProveedor" required>
-          </div>
-
-          <div class="form-group">
-            <label>tipoIdentificacion</label>
-            <input type="text" class="form-control" id="tipoIdentificacion" [(ngModel)]="proveedor.tipoIdentificacion" name="tipoIdentificacion" required>
-          </div>
-
-          <div class="form-group">
-            <label>fechaRegistro</label>
-            <input type="text" class="form-control" id="fechaRegistro" [(ngModel)]="proveedor.fechaRegistro" name="fechaRegistro" required>
-          </div>
-
-          
-          <button type="submit" class="btn btn-primary">Guardar</button>
-        </form>
-      </div> -->
 
 <div class="card">
   <div class="card-h1">Editar Proveedor</div>
@@ -118,18 +65,48 @@
               </mat-error>
             </div>
           </div>
-          
-          
 
           <div class="col-md-6">
-            <label>Fecha Registro</label>
-            <input type="date" formControlName="fechaRegistro" id="fechaRegistro"  name="fechaRegistro" required>
-            <div *ngIf="fechaRegistroFieldInvalid">
-              <mat-error *ngIf="fechaRegistro?.hasError('required')">
-                la fecha es obligatoria
+            <label for="tipoProveedor">Tipo de Proveedor</label>
+            <select name="tipoProveedor" type="text" formControlName="tipoProveedor" id="tipoProveedor">
+              <option>Seleccione un Tipo de Proveedor</option>
+              <option *ngFor="let item of tipoProveedorList" value="{{item.id}}">
+                {{item.tipoProveedor}}
+              </option>
+            </select>
+            <div *ngIf="tipoProveedorFieldInvalid">
+              <mat-error *ngIf="tipoProveedor?.hasError('required')">
+                El Tipo de Proveedor es Obligatorio
               </mat-error>
             </div>
           </div>
+
+          <div class="col-md-6">
+            <label for="tipoIdentificacion">Tipo de Proveedor</label>
+            <select name="tipoIdentificacion" type="text" formControlName="tipoIdentificacion" id="tipoIdentificacion">
+              <option>Seleccione un Tipo de Proveedor</option>
+              <option *ngFor="let item of tipoIdentificacionList" value="{{item.id}}">
+                {{item.tipoIdentificacion}}
+              </option>
+            </select>
+            <div *ngIf="tipoIdentificacionFieldInvalid">
+              <mat-error *ngIf="tipoIdentificacion?.hasError('required')">
+                El Tipo de Proveedor es Obligatorio
+              </mat-error>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label>Número</label>
+            <input type="text" formControlName="numeroIdentificacion" id="numeroIdentificacion"  name="numeroIdentificacion" required>
+            <div *ngIf="numeroIdentificacionFieldInvalid">
+              <mat-error *ngIf="numeroIdentificacion?.hasError('required')">
+                El número de Identificacion es obligatoria
+              </mat-error>
+            </div>
+          </div>
+          
+          
 
           <button type="submit" class="btn btn-new" [disabled]="!formulario.valid">Guardar</button>
         </div>

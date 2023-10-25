@@ -3,6 +3,10 @@ import { Proveedor} from 'src/app/model/proveedor';
 import { ProveedorService } from 'src/app/services/proveedor.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { TipoIdentificacionService } from 'src/app/services/tipo-identificacion.service';
+import { TipoIdentificacion } from 'src/app/model/tipo-identificacion';
+import { TipoProveedor } from 'src/app/model/tipo-proveedor';
+import { TipoProveedorService } from 'src/app/services/tipo-proveedor.service';
 
 @Component({
   selector: 'app-editproveedor',
@@ -15,17 +19,32 @@ export class EditproveedorComponent implements OnInit{
   submitted = false;
   formulario!: FormGroup;
 
+  tipoProveedorList: any;
+  tipoIdentificacionList: any;
+
 
   constructor(
     private proveedorService: ProveedorService, 
+    private tipoProveedorService: TipoProveedorService,
     private route: ActivatedRoute, 
-    private router: Router
+    private router: Router,
+    private tipoIdentificacionService: TipoIdentificacionService,
+
+
     ){ }
 
   
   ngOnInit(): void {
     this.idProveedor = Number(this.route.snapshot.paramMap.get('id'));
     this.buildForm();
+
+    this.tipoProveedorService.obtenerTipoProveedor().subscribe((tipoProveedor: TipoProveedor[]) =>{
+      this.tipoProveedorList = tipoProveedor;
+    });
+
+    this.tipoIdentificacionService.obtenerTipoIdentificacion().subscribe((tipoIdentificacion: TipoIdentificacion[]) =>{
+      this.tipoIdentificacionList = tipoIdentificacion;
+    });
 
     if(this.idProveedor !== null){
       const id = +this.idProveedor;
@@ -37,7 +56,10 @@ export class EditproveedorComponent implements OnInit{
         this.formulario.get('direccion').setValue(proveedor.direccion);
         this.formulario.get('correo').setValue(proveedor.correo);
         this.formulario.get('razonSocial').setValue(proveedor.razonSocial);
-        this.formulario.get('fechaRegistro').setValue(proveedor.fechaRegistro);
+        this.formulario.get('tipoProveedor').setValue(proveedor.tipoProveedor.id);
+        this.formulario.get('tipoIdentificacion').setValue(proveedor.tipoIdentificacion.id);
+        this.formulario.get('numeroIdentificacion').setValue(proveedor.numeroIdentificacion)
+        
 
       })
     }
@@ -51,7 +73,9 @@ export class EditproveedorComponent implements OnInit{
       correo: new FormControl('', Validators.required),
       direccion: new FormControl('', Validators.required),
       razonSocial: new FormControl('', Validators.required),
-      fechaRegistro: new FormControl('', Validators.required),
+      tipoProveedor: new FormControl('', Validators.required),
+      tipoIdentificacion: new FormControl('', Validators.required),
+      numeroIdentificacion:new FormControl('', Validators.required),
     })
 
   }
@@ -101,14 +125,6 @@ export class EditproveedorComponent implements OnInit{
     return this.formulario.get('razonSocial')
   }
 
-  get fechaRegistroFieldInvalid(){
-    return this.fechaRegistro?.touched && this.fechaRegistro.invalid;
-  }
-
-  get fechaRegistro() {
-    this.formulario.get('fechaRegistro')
-    return this.formulario.get('fechaRegistro')
-  }
 
   get direccionFieldInvalid(){
     return this.direccion?.touched && this.direccion.invalid;
@@ -119,8 +135,43 @@ export class EditproveedorComponent implements OnInit{
     return this.formulario.get('direccion')
   }
 
+    get tipoProveedorFieldInvalid() {
+    return this.tipoProveedor?.touched && this.tipoProveedor.invalid;
+  }
+
+  get tipoProveedor() {
+    this.formulario.get('tipoProveedor')
+    return this.formulario.get('tipoProveedor');
+  }
+
+  get tipoIdentificacionFieldInvalid() {
+    return this.tipoIdentificacion?.touched && this.tipoIdentificacion.invalid;
+  }
+
+  get tipoIdentificacion() {
+    this.formulario.get('tipoIdentificacion')
+    return this.formulario.get('tipoIdentificacion');
+  }
+
+  get numeroIdentificacionFieldInvalid() {
+    return this.numeroIdentificacion?.touched && this.numeroIdentificacion.invalid;
+  }
+
+  get numeroIdentificacion() {
+    this.formulario.get('numeroIdentificacion')
+    return this.formulario.get('numeroIdentificacion');
+  }
+
   guardarCambiosProveedor(): void {
     let proveedorEnviar: Proveedor = new Proveedor();
+
+    let tipoProveedor : TipoProveedor = new TipoProveedor();
+    tipoProveedor.id = this.tipoProveedor?.value;
+
+    let tipoIdentificacion : TipoIdentificacion = new TipoIdentificacion();
+    tipoIdentificacion.id = this.tipoIdentificacion?.value;
+
+
 
     proveedorEnviar.id = this.idProveedor;
     proveedorEnviar.nombre = this.formulario.get('nombre').value;
@@ -129,7 +180,10 @@ export class EditproveedorComponent implements OnInit{
     proveedorEnviar.direccion = this.formulario.get('direccion').value;
     proveedorEnviar.correo = this.formulario.get('correo').value;
     proveedorEnviar.razonSocial = this.formulario.get('razonSocial').value;
-    proveedorEnviar.fechaRegistro = this.formulario.get('fechaRegistro').value;
+    proveedorEnviar.tipoProveedor = tipoProveedor;
+    proveedorEnviar.tipoIdentificacion = tipoIdentificacion;
+    proveedorEnviar.numeroIdentificacion = this.formulario.get('numeroIdentificacion').value;
+
 
     console.log(proveedorEnviar);
 
@@ -138,7 +192,7 @@ export class EditproveedorComponent implements OnInit{
       response => {
         console.log(response);
         this.submitted = true;
-        this.router.navigate['/proveedor/consultar'];
+        this.router.navigate(['proveedor/consultar']);
       },
       error => {
         console.log(error);
